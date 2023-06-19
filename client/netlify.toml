@@ -7,8 +7,3 @@ status = 200
 from = "/products/:id/*"
 to ="/products/:id/"
 status = 200
-
-[[redirects]]
-from = "/checkout"
-to ="/checkout"
-status = 200
