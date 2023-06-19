@@ -1,7 +1,7 @@
 import React , {useContext} from 'react'
 import {ImArrowLeft2}from  "react-icons/im";
 import axios from 'axios';
-import { useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import FormContext from '../context/FormContext';
 import ProductContext from '../context/ProductContext';
 import { useNavigate } from 'react-router-dom';
@@ -38,7 +38,7 @@ const handleSubmit = async (event) => {
     console.log(err);
   });
   updateProduct(product_details);
-  navigate(`/products/${params.id}/checkout`);
+  navigate(`/checkout`);
 //--------------------------Getting Product Details Using ID ---------------------------------------//
 };
 

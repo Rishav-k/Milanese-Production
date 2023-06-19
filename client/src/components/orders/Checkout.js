@@ -133,4 +133,4 @@ cashfree.checkout(checkoutOptions).then(function(result){
   )
 }
 
-export default Checkout
+export default Checkout;
