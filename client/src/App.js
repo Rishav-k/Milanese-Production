@@ -2,10 +2,10 @@ import React from 'react';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Customiser from './components/customiser/Customise.js'
+// import Customiser from './components/customiser/Customise.js'
 import SignIn from './components/signin/SignIn.js';
 import Address from './components/orders/Address.js';
-import Checkout from './components/orders/Checkout.js';
+// import Checkout from './components/orders/Checkout.js';
 import FormContext from './components/context/FormContext.js';
 import useForm from './components/context/useForm.js';
 import Test from './components/orders/Test.js';
@@ -23,12 +23,12 @@ function App() {
     <ProductContext.Provider value={{ product, updateProduct }}>
     <BrowserRouter>
      <Routes>
-     <Route path= "/test" element={<Test/>} />
+     <Route path= "test" element={<Test/>} />
      <Route path="signin" element = {<SignIn/>} />
      <Route path="address" element = {<Address/>} />
-     <Route path="/customiser/products/:id" element={<Customiser />}></Route>
+     {/* <Route path="/customiser/products/:id" element={<Customiser />}></Route>
      <Route path="/customiser/products/:id/address" element={<Address />}></Route>
-     <Route path="/customiser/products/:id/checkout" element={<Checkout />}></Route>
+     <Route path="/customiser/products/:id/checkout" element={<Checkout />}></Route> */}
      </Routes>
      </BrowserRouter>
      </ProductContext.Provider>
