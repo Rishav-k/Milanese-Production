@@ -4,6 +4,6 @@ to="/"
 status = 200
 
 [[redirects]]
-from = "/products/*"
-to ="/products/"
+from = "/products/:id/*"
+to ="/products/:id/"
 status = 200
