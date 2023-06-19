@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+
+Canvas{
+  height: 500px;
+}
+.editor{
+  height : 30px;
+  width :100px;
+  border: solid;
+}

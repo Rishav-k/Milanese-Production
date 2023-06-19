@@ -1,0 +1,78 @@
+import React , { useRef , useEffect ,Suspense} from 'react';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { useLoader } from '@react-three/fiber';
+import './css/customise.css';
+
+const Viewer = (props) =>{ 
+  console.log(props.isStartOver) ;
+  const gltf = useLoader(GLTFLoader, props.shoe);
+  console.log(props);
+  // if(props.isStartOver === true){
+
+//   const meshNames = Object.keys(gltf.nodes);
+
+//     console.log(meshNames);
+//     props.ConClick(meshNames[0]);
+     
+// }
+useEffect(() => {
+    const objectName = props.component; 
+    const object = gltf.scene.getObjectByName(objectName);
+  
+    if (object && props.update === true) {
+      //       const new_material=new THREE.MeshStandardMaterial({
+//     map : props.colorMap,
+//     normalMap : props.normalMap,
+//     heightMap : props.displacementMap,
+//     roughnessMap : props.roughnessMap
+// });
+// object.material=new_material;
+// }
+    const clickedMaterial  = object.material;
+    console.log(clickedMaterial);
+                
+
+    clickedMaterial.map = props.colorMap;
+    clickedMaterial.normalMap = props.normalMap;
+    clickedMaterial.heightMap = props.heightMap;
+    clickedMaterial.roughnessMap = props.roughnessMap;
+    // clickedMaterial.aoMap = props.aoMap;
+
+    clickedMaterial.roughness = 1;
+    clickedMaterial.metalness = 0;
+    clickedMaterial.needsUpdate = true;
+    
+    clickedMaterial.color.set(props.color); 
+  } 
+
+ if (object && props.update === false) {
+      const clickedMaterial = object.material.clone();
+  // Modify the cloned material as needed
+      object.material.color.set('#aaaaaa');
+  setTimeout(() => {
+    object.material = clickedMaterial;
+  }, 600);
+
+}
+
+  },[props.component, props.update, props.normalMap, props.heightMap, props.roughnessMap, props.color, gltf.scene ,props.colorMap]);
+
+
+const shoeComponents = useRef(null);
+const handleClick = (event) => {
+    const clickedComponent = event.object;
+    console.log(clickedComponent.name);
+    const clickedName = clickedComponent.name;
+    props.ConClick(clickedName);
+    event.stopPropagation();
+  };
+  return (
+    <mesh onClick={handleClick}  >
+      <group group ref={shoeComponents} >
+      <Suspense>
+        <primitive object={gltf.scene} />
+       </Suspense>
+      </group>
+    </mesh>
+)}
+export default Viewer;  

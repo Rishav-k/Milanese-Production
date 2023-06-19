@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.customise{
+    height:400px;
+}
+.address{
+    height: 100vh;
+}
+.customiser-view{
+    height :100vh;
+    display: block;
+}
+.brand-active {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.components {
+    display: flex;
+    justify-content: space-around;
+}
+.component-name {
+    height: 20px;
+}
+.editor {
+    /* border : solid; */
+    margin-top: 10px;
+}
+.textures{
+    display:flex;
+    /* justify-content: center; */
+}
+@media only screen and (max-width: 600px){
+    .editor{
+        position : relative;
+    }
+    .customise {
+        top : 100px;
+        height : 296px;
+    }
+    .edit-function{
+        display: none;
+        margin : 20px 16px 16px 16px;
+        background-color: #F9F9F9;
+        border-radius  : 22px;
+        height : 41px;
+        /* display: flex; */
+        /* justify-content: space-around;
+        align-items: center;; */
+    }
+    .edit-function-name{
+        font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px
+    }
+    .edit-function-name>span{
+        position : relative;
+        top : 4px;
+        left : 5px;
+    }
+    .components{
+        /* border: solid black; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height : 40px;
+    }
+    .component-name {
+        padding-left : 10px;
+        padding-right : 10px;
+        margin-left : 5px;
+        margin-right : 5px;
+        font-size : 20px;
+        margin-bottom : 4px;
+        padding-bottom: 4px;
+        font-family: 'Playfair Display';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 27px;
+    }
+    .component-counter{
+    font-family: Sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 27px;
+        color:#4E4E4E;
+    }
+    .arrow{
+        margin : auto 20px;
+    }
+
+    .hamburger-icon{
+        width: 25px;
+        transform : scale(1.5);
+        position: absolute;
+        right: 10px;
+        top: 11px;
+        transition : scale 0.3s smooth;
+    }
+    .hamburger-icon:hover{
+        transform: scale(1.2);
+    }
+    .menu{
+        position : fixed;
+        bottom : 0;
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index : -1;
+        box-shadow: 0 -1px 100px rgba(0, 0, 0, 0.25);
+    }
+        .menu.open {
+            opacity : 1;
+            z-index: 2;
+            bottom : 0px;
+        }
+        .menu>h3{
+            font-family: 'Inter';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 24px;
+        }
+        .close-details{
+            position : absolute;
+            right :14px;
+            top: 7px;
+            font-weight: bold;
+        }
+
+
+.arrange{
+    display: flex;
+    flex-wrap: wrap;
+}
+.component-items{
+    flex-basis: 40%;
+    margin-bottom : 10px;
+  margin-left: 16px;
+font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.component-item-check{
+    display: none;
+}
+
+.selector-name{
+    height: 80px;
+    /* border : solid black; */
+    position: relative;
+    display : flex;
+    align-items: center;
+
+}
+.textures{
+    /* border : solid black; */
+    overflow-x: auto;
+    display: flex;
+}
+.selector-type{
+    /* border : solid  black; */
+    min-width : 61px;
+    /* margin-left: 16px; */
+    display: inline-block;
+    margin: auto 25px auto 16px ;
+    
+}
+.selector-type-txt{
+    font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+}
+
+.done-div-container{
+   height : 72px;
+   display: flex;
+   justify-content: space-between;
+   /* border : solid black; */
+   width: 100vw;
+        position: fixed;
+        bottom: 0;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.5);
+
+    background-color: white;
+}
+
+.done-div-container .left{
+    /* display: flex; */
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left : 16px;
+        font-size: 12px;
+}
+.done-div-container .price{
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+}
+.done-div-container .right{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin-right : 16px;
+font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+
+}
+.done-div-container .right .done{
+    border : none;
+    width : 116px;
+    height : 40px;
+    border-radius:  27px;
+    background-color: black;
+    color : white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+}
+
+
+
+.texture-name {
+    border : solid grey 1px;
+    border-radius: 5px;
+    padding : 5px;
+    margin : 10px;
+    font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
+}
+.colors{
+    display : flex ;
+    justify-content: center;
+    padding : 10px;
+}
+.color-name{
+    border : solid grey 1px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
+}
+/* const new_material=new THREE.MeshStandardMaterial({
+    map : props.colorMap,
+    normalMap : props.normalMap,
+    heightMap : props.displacementMap,
+    roughnessMap : props.roughnessMap,
+});
+object.material=new_material;
+} */
+.meshBasicMaterial {
+    transition: color 0.5s;
+}
+.order{
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+}
