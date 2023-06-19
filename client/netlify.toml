@@ -7,3 +7,8 @@ status = 200
 from = "/products/:id/*"
 to ="/products/:id/"
 status = 200
+
+[[redirects]]
+from = "/products/:id/address/*"
+to ="/products/:id/address/"
+status = 200
