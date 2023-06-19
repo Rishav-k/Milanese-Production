@@ -1,7 +1,7 @@
 import React , {useContext} from 'react'
 import {ImArrowLeft2}from  "react-icons/im";
 import axios from 'axios';
-import { NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import FormContext from '../context/FormContext';
 import ProductContext from '../context/ProductContext';
 import { useNavigate } from 'react-router-dom';
@@ -38,7 +38,7 @@ const handleSubmit = async (event) => {
     console.log(err);
   });
   updateProduct(product_details);
-  navigate("checkout");
+  navigate(`/products/${params.id}/checkout`);
 //--------------------------Getting Product Details Using ID ---------------------------------------//
 };
 
@@ -78,11 +78,9 @@ const handleSubmit = async (event) => {
       <div className = "address-note">
        <center><span>The billing address will be used same as the above address</span></center> 
       </div>
-      <NavLink to={`checkout`} >
       <div className = "address-add-btn" onClick={handleSubmit}>
          Add
       </div>
-      </NavLink>
     </div>
   )
 }
