@@ -14,7 +14,7 @@ const { updateProduct } = useContext(ProductContext);
 const { formData, updateFormData } = useContext(FormContext);
 
 const params = useParams();
-  console.log(params.id);
+  console.log("PArams : " +  params.id);
   
 
 const handleInputChange = (e) => {
@@ -38,7 +38,7 @@ const handleSubmit = async (event) => {
     console.log(err);
   });
   updateProduct(product_details);
-  navigate(`/customiser/products/${params.id}/checkout`);
+  navigate(`checkout`);
 //--------------------------Getting Product Details Using ID ---------------------------------------//
 };
 
@@ -46,7 +46,7 @@ const handleSubmit = async (event) => {
   return (
     <div className = "address">
          <div className = "address-header">
-            <div className = "arrow" onClick={()=>{navigate(`/customiser/products/${params.id}`);console.log("Go Back to customiser")}}><span><ImArrowLeft2 /></span></div>
+            <div className = "arrow" onClick={()=>{navigate(-1);console.log("Go Back to customiser")}}><span><ImArrowLeft2 /></span></div>
             <div className = "add-address"><span>Add Address</span></div>
             <div className = "page-count"><span>2/4</span></div>
             
