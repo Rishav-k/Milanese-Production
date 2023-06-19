@@ -9,6 +9,6 @@ to ="/products/:id/"
 status = 200
 
 [[redirects]]
-from = "/checkout/*"
+from = "/checkout"
 to ="/checkout"
 status = 200
