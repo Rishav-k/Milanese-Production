@@ -38,7 +38,7 @@ const handleSubmit = async (event) => {
     console.log(err);
   });
   updateProduct(product_details);
-  navigate(`/checkout`);
+  navigate(`checkout`);
 //--------------------------Getting Product Details Using ID ---------------------------------------//
 };
 
