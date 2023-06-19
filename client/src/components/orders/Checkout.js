@@ -106,7 +106,7 @@ cashfree.checkout(checkoutOptions).then(function(result){
                 <br/>
                 <span>{formData.phone}</span>
                 <br/>
-                <button onClick={()=>{navigate(`/customiser/products/${params.id}/address`);console.log("Go Back to Address")}}>Change Address</button>
+                <button onClick={()=>{navigate(-1);console.log("Go Back to Address")}}>Change Address</button>
             </div>
 
             <div className ="checkout-Product">
