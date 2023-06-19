@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Customiser from './components/customiser/Customise.js'
 import SignIn from './components/signin/SignIn.js';
 import Address from './components/orders/Address.js';
-// import Checkout from './components/orders/Checkout.js';
+import Checkout from './components/orders/Checkout.js';
 import FormContext from './components/context/FormContext.js';
 import useForm from './components/context/useForm.js';
 import Test from './components/orders/Test.js';
