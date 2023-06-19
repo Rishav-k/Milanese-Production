@@ -31,7 +31,7 @@ function App() {
            <Route path=":id/address" element = {<Address/>} />
           
       </Route>
-       {/* <Route path="/checkout" element={<Checkout />} /> */}
+       <Route path="/checkout" element={<Checkout />} />
 
      {/* <Route path="/products/:id" element={<Customiser />}></Route> */}
      {/* <Route path="/products/:id/address" element={<Address />}></Route>

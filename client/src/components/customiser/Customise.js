@@ -217,7 +217,7 @@ var divStyle = {
         <div className = "done-div-container done-div-container-2">
            <div className = "left"><div><span className = "price"> <BsCurrencyRupee/> {shoe.price}</span><span><br/>  Expected delivery in 1 week</span></div>
            </div>
-           <div className = "right"><NavLink to={`/signin`}><div className = "done">Done </div></NavLink> </div>
+           <div className = "right"><NavLink to={`/checkout`}><div className = "done">Done </div></NavLink> </div>
         </div>
     </div>
       
