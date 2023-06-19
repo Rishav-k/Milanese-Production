@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// import Customiser from './components/customiser/Customise.js'
+import Customiser from './components/customiser/Customise.js'
 import SignIn from './components/signin/SignIn.js';
 import Address from './components/orders/Address.js';
 // import Checkout from './components/orders/Checkout.js';
@@ -26,9 +26,9 @@ function App() {
      <Route path= "test" element={<Test/>} />
      <Route path="signin" element = {<SignIn/>} />
      <Route path="address" element = {<Address/>} />
-     {/* <Route path="/customiser/products/:id" element={<Customiser />}></Route>
-     <Route path="/customiser/products/:id/address" element={<Address />}></Route>
-     <Route path="/customiser/products/:id/checkout" element={<Checkout />}></Route> */}
+     <Route path="/products/:id" element={<Customiser />}></Route>
+     {/* <Route path="/products/:id/address" element={<Address />}></Route>
+     <Route path="/products/:id/checkout" element={<Checkout />}></Route> */}
      </Routes>
      </BrowserRouter>
      </ProductContext.Provider>

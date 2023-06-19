@@ -7,7 +7,7 @@ import * as THREE from 'three';
 // import Signin from './components/signin/signin.js';
 import './css/customise.css';
 import { NavLink } from 'react-router-dom';
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 import {BsCurrencyRupee }from  "react-icons/bs";
 import {FaCheck }from  "react-icons/fa";
@@ -40,7 +40,7 @@ console.log("HELLO");
 var component = shoe.components[0].meshName;
 
 function Customise() {
-   const params = useParams();
+  //  const params = useParams();
      
   
 
@@ -217,7 +217,7 @@ var divStyle = {
         <div className = "done-div-container done-div-container-2">
            <div className = "left"><div><span className = "price"> <BsCurrencyRupee/> {shoe.price}</span><span><br/>  Expected delivery in 1 week</span></div>
            </div>
-           <div className = "right"><NavLink to={`/customiser/products/${params.id}/address`}><div className = "done">Done </div></NavLink> </div>
+           <div className = "right"><NavLink to={`/address`}><div className = "done">Done </div></NavLink> </div>
         </div>
     </div>
       
