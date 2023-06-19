@@ -89,7 +89,7 @@ cashfree.checkout(checkoutOptions).then(function(result){
   return (
     <div>
      <div className='checkout-header'>
-       <div className = "arrow" onClick={()=>{navigate(`/customiser/products/${params.id}/address`);console.log("Go Back to Address")}}><span><ImArrowLeft2 /></span></div>
+       <div className = "arrow" onClick={()=>{navigate(-1);console.log("Go Back to Address")}}><span><ImArrowLeft2 /></span></div>
             <div className = "review-order"><span>Review Order</span></div>
             <div className = "page-count"><span>3/4</span></div>
             </div>
