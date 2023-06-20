@@ -1,45 +1,66 @@
-import React , {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import Customise from './Customise';
 import { useNavigate } from 'react-router-dom';
+import { shoes } from './shoes.js';
+import { useParams } from 'react-router-dom';
 
-
+var shoe = shoes[8385974993212];
 const Dashboard = () => {
-console.log("hii");
+  const params = useParams();
 
-     const navigate = useNavigate();
-    const callDashboardPage = async ()=>{
-    try{
-      const res = await fetch('/authenticate' ,{ 
-        method :"GET",
-        headers:{
-          Accept :"application/json",
-          "Content-Type" : "application/json"
-        },
-        credentials :"include"
-      })
-      console.log(res.data);
-      const data = res.status ;
-
-      if(data!= 200){
-        console.log(data + "status of dashboard");
-        const err = new Error(res.error);
-        throw err;
+  const [fetchComplete, setFetchComplete] = useState(false);
+  const [gotShoe, setGotShoe] = useState(false);
+  const navigate = useNavigate();
+  const getShoesDetails = async (id) => {
+    console.log(id);
+    try {
+      shoe = shoes[id];
+      if (shoe) {
+        setGotShoe(true);
       }
-    }catch(err){
-      console.log(err)
-       navigate('/signin')
+      // console.log(shoe);
+      // console.log(shoe.components[].textures[texture[]].color.code);
+    } catch {
+      console.log(shoe);
+      // alert('Invalid Product ID');
     }
-  }
+  };
 
-  useEffect(()=>{
-    callDashboardPage();});
+  const callDashboardPage = async () => {
+    try {
+      const res = await fetch('/authenticate', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+
+      console.log('authentication response:', res);
+
+      if (res.status !== 200) {
+        console.log('Status of dashboard:', res.status);
+        throw new Error(res.error);
+      }
+
+      setFetchComplete(true);
+    } catch (error) {
+      console.log('Error received:', error);
+      navigate('/signin');
+    }
+  };
+
+  useEffect(() => {
+    callDashboardPage();
+    getShoesDetails(params.id);
+  }); // Include params.id as a dependency to re-fetch shoe details when it changes
 
   return (
-    
     <div>
-      <Customise />
+      {fetchComplete && gotShoe && <Customise  shoe ={shoe} />}
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

@@ -61,8 +61,10 @@ useEffect(() => {
 const shoeComponents = useRef(null);
 const handleClick = (event) => {
     const clickedComponent = event.object;
-    console.log(clickedComponent.name);
+    // clickedComponent.visible = !clickedComponent.visible;  
+    console.log(clickedComponent);
     const clickedName = clickedComponent.name;
+
     props.ConClick(clickedName);
     event.stopPropagation();
   };

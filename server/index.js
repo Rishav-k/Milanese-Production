@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 const cookieParser = require('cookie-parser');
+const { error } = require('console');
 
 app.use(express.json());
 app.use(cookieParser());
@@ -9,35 +10,85 @@ app.use(cookieParser());
 app.get('/',(req,res)=>{
   res.send("Welcome to Server of Milanese Leather ");
 })
-app.get('/authenticate' , (req,res)=>{
+
+app.post('/signup' , async (req,res)=>{
+  console.log(req.body);
+  // const data = req.body;
+  const requestData = {
+  
+  "customer": {
+    "name" : req.body.name,
+    "email": req.body.email,
+    "verified_email": true,
+    "password": req.body.password,
+    "password_confirmation": req.body.confirmPassword,
+    "send_email_welcome": false
+  }
+
+}
+  axios.post('https://estro-schuster-1.myshopify.com/admin/api/2023-04/customers.json', requestData, {
+        headers: {
+          'X-Shopify-Access-Token': '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',
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((response) => {
+        // Handle the response data
+        // res.send("Registration Successfull")
+        // console.log(response.data);
+        res.send(response.data);
+      })
+      .catch((error) => {
+        // Handle the error
+        console.log(error.status);
+        if(error.status==422){
+          console.log("user Already Registered");
+        }
+        console.log("not Registered")
+        res.send(error);
+        // console.log(error);
+      });
+})
+
+
+app.get('/authenticate' , async (req,res)=>{
   console.log("hello world");
   console.log(req.cookies.rishav);
 
 const graphqlEndpoint = 'https://estro-schuster-1.myshopify.com/api/2023-04/graphql.json';
-   const query = {
-  query: `query {
-    customer(customerAccessToken: ${req.cookies.rishav}) {
-      id
-      firstName
-      lastName
-      acceptsMarketing
-      email
-      phone
-    }
-  }`,
-};
+   const token = req.cookies.rishav; // Store the access token in the 'token' variable
+  const query = {
+    query: `query($token: String!) { 
+      customer(customerAccessToken: $token) {
+        id
+        firstName
+        lastName
+        acceptsMarketing
+        email
+        phone
+      }
+    }`,
+    variables: { token }, // Pass the token variable to the query variables
+  };
  const headers = {
     'Content-Type': 'application/json',
-    'X-Shopify-Storefront-Access-Token': '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',
+    'X-Shopify-Storefront-Access-Token': '710dd918a3ac6e17efcdb7ba67da4ebf',
   };
 
   axios.post(graphqlEndpoint, query, { headers })
   .then((response) => {
     console.log(response.data);
+    if (!response.data.data.customer) {
+        throw new Error('Customer not found'); // Throw an error
+      }
+       res.status(200).send(response.data); 
+   
     // Handle the response data from the Shopify API
   })
   .catch((error) => {
-    console.log('Error:', error);
+    // console.log('Error:', error);
+    console.log("authentication error")
+    res.status(400).json("Unauthorised User")
     // Handle any errors that occurred during the request
   });
 });
@@ -81,7 +132,7 @@ app.post('/get_auth_token' , async(req,res)=>{
       const { accessToken } = customerAccessTokenCreate.customerAccessToken;
       console.log('Access Token:', accessToken);
       res.cookie('rishav', accessToken, { 
-        maxAge: 900000,
+        maxAge: 9000000,
         httpOnly: true,
         secure: true
       });

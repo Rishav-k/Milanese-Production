@@ -1,4 +1,4 @@
-import React , { useState} from 'react';
+import React , { useState ,useEffect} from 'react';
 import { Canvas } from '@react-three/fiber';
 import Viewer from './Viewer.js';
 import { OrbitControls ,ContactShadows } from '@react-three/drei';
@@ -20,28 +20,32 @@ import {BsShuffle }from  "react-icons/bs";
 import {textures} from './texture.js';
 
 // import {shoe} from './shoe.js';
-import {shoes} from './shoes.js';
+// import {shoes} from './shoes.js';
 
 // var txt = textures.perforated;
-var shoe = shoes[8385974993212] ;
-console.log(shoe);
+// var shoe = shoes[8385974993212] ;
+// console.log(shoe);
 
 var texture = [];
 var color = [];
-for(var k = 0 ; k < shoe.components.length ; k++){
+for(var k = 0 ; k <20 ; k++){
    texture[k] = 0;
    color[k] = 0;
 }
 
 console.log(color);
 console.log("HELLO");
+var component;
+function initials(shoe){
+  component = shoe.components[0].meshName;
+}
+// var component = shoe.components[0].meshName;
 
-
-var component = shoe.components[0].meshName;
-
-function Customise() {
+function Customise({shoe}) {
   //  const params = useParams();
-     
+     useEffect(()=>{
+      initials(shoe);
+     })
   
 
      const [flag , setFlag] = useState(false);
@@ -173,7 +177,7 @@ var divStyle = {
            <Viewer shoe = {shoe.link} blink ={blink} component={component}  update = {flag} ConClick = {getComponent} color = {col} colorMap = {colorMap}    heightMap = {heightMap} normalMap ={normalMap} roughnessMap = {roughnessMap} aoMap = {aoMap} isStartOver={isStartOver}/>
           
            <ContactShadows position={[0, -0.8, 0]} opacity={0.25} scale={10} blur={1.5} far={0.8} />
-          <OrbitControls minPolarAngle={-Math.PI/6} maxPolarAngle={Math.PI/2} enableZoom={true} enablePan={false} />
+          <OrbitControls minPolarAngle={Math.PI/6} maxPolarAngle={Math.PI} enableZoom={true} enablePan={false} />
        </Canvas>
 
       <div className = "editor" style = {divStyle} >
