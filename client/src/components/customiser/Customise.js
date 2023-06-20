@@ -173,7 +173,7 @@ var divStyle = {
            <Viewer shoe = {shoe.link} blink ={blink} component={component}  update = {flag} ConClick = {getComponent} color = {col} colorMap = {colorMap}    heightMap = {heightMap} normalMap ={normalMap} roughnessMap = {roughnessMap} aoMap = {aoMap} isStartOver={isStartOver}/>
           
            <ContactShadows position={[0, -0.8, 0]} opacity={0.25} scale={10} blur={1.5} far={0.8} />
-          <OrbitControls minPolarAngle={Math.PI/6} maxPolarAngle={Math.PI} enableZoom={true} enablePan={false} />
+          <OrbitControls minPolarAngle={-Math.PI/6} maxPolarAngle={Math.PI/2} enableZoom={true} enablePan={false} />
        </Canvas>
 
       <div className = "editor" style = {divStyle} >

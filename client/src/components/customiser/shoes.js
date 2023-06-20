@@ -3,7 +3,7 @@ const shoes = {
         name :  "Leather Shoes",
         price : 13499,
         id : "8385974993212",
-        link : 'https://milaneseleather3d.s3.ap-south-1.amazonaws.com/MonkStrap/ML-9Updated_OS-2.glb',
+        link : 'https://milaneseleather3d.s3.ap-south-1.amazonaws.com/MonkStrap/ML-9_OS-2+(1).glb',
         components : [{
             name : "Toe" ,
             meshName : "Part_1",
@@ -327,7 +327,7 @@ const shoes = {
                 
             },{
                 name : "Quarter",
-                meshName : "part_5",
+                meshName : "part_4_042",
                 textures : [{
                 name : "Quartz" ,
                 id : "quartz",

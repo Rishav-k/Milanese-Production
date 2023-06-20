@@ -20,7 +20,7 @@ const handleSignIn = async (e) => {
       });
       const  authToken  = response.data;
       console.log('Auth Token:', authToken);
-      navigate("/address")
+      // navigate()
       // Continue with further actions or navigate to another page
     } catch (error) {
       console.log('Error:', error.message);

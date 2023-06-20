@@ -1,12 +1,46 @@
 const express = require('express');
 const axios = require('axios');
 const app = express();
-app.use(express.json());
+const cookieParser = require('cookie-parser');
 
+app.use(express.json());
+app.use(cookieParser());
 
 app.get('/',(req,res)=>{
   res.send("Welcome to Server of Milanese Leather ");
 })
+app.get('/authenticate' , (req,res)=>{
+  console.log("hello world");
+  console.log(req.cookies.rishav);
+
+const graphqlEndpoint = 'https://estro-schuster-1.myshopify.com/api/2023-04/graphql.json';
+   const query = {
+  query: `query {
+    customer(customerAccessToken: ${req.cookies.rishav}) {
+      id
+      firstName
+      lastName
+      acceptsMarketing
+      email
+      phone
+    }
+  }`,
+};
+ const headers = {
+    'Content-Type': 'application/json',
+    'X-Shopify-Storefront-Access-Token': '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',
+  };
+
+  axios.post(graphqlEndpoint, query, { headers })
+  .then((response) => {
+    console.log(response.data);
+    // Handle the response data from the Shopify API
+  })
+  .catch((error) => {
+    console.log('Error:', error);
+    // Handle any errors that occurred during the request
+  });
+});
 
 app.post('/get_auth_token' , async(req,res)=>{
   const {email , password}  = req.body;
@@ -46,7 +80,13 @@ app.post('/get_auth_token' , async(req,res)=>{
       // Access the access token
       const { accessToken } = customerAccessTokenCreate.customerAccessToken;
       console.log('Access Token:', accessToken);
+      res.cookie('rishav', accessToken, { 
+        maxAge: 900000,
+        httpOnly: true,
+        secure: true
+      });
       res.json({ accessToken });
+      
     }
   } catch (error) {
     console.log('Error:', error.message);
