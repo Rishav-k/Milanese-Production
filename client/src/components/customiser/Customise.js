@@ -121,7 +121,7 @@ function handleTexture(id){
 const textureButtons = [];
 shoe.components[i].textures.forEach((item , index)=>{
                  textureButtons.push(<div key = {index} className = "texture-name" name={item.id} onClick={()=>{ setFlag(true); texture[i] = index;
-     setJ(j);  handleTexture(item.id);console.log(item.id)}}>{item.name}</div>)
+     setJ(j);  handleTexture(item.id);console.log(item.id);console.log(textures[item.id]);}}><div className='texture-image' ><img src = {textures[item.id].icon_link} alt = "img" /></div><div className='small-texture-name'>{item.name}</div></div>)
              })
 
 function handleColor(id){
@@ -131,7 +131,8 @@ function handleColor(id){
 //color Button from shoe.js
 const colorButtons = [];
 shoe.components[i].textures[texture[i]].color.forEach((item , index)=>{
-                 colorButtons.push(<div key= {index} className = "color-name"  onClick={()=>{color[i] = index ; console.log(item);handleColor(item.code)}}>{item.name}</div>)
+                 colorButtons.push(<div key= {index} className = "color-name"  onClick={()=>{color[i] = index ; console.log(item);handleColor(item.code);}}><div className="small-color-div" style={{ backgroundColor: item.code }}></div>
+<div className="small-color-name">{item.name}</div></div>)
              }) 
 
           component = shoe.components[i].meshName ;

@@ -1,6 +1,7 @@
 const textures = {
     alligator : {
         name : "alligator",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Alligator+leather/color_map.jpg",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Alligator+leather/color_map.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Alligator+leather/normal_map_opengl.jpg",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Alligator+leather/roughness_map.jpg",
@@ -8,31 +9,37 @@ const textures = {
     },
     quartz : {
         name : "quartz",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-1-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-1/M-1.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-1/M-1normal-map.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-1/M-1roughness+ma.png"
     },
     net : {
         name : "net",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-2-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-2/M-2.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-2/M-2normal.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-2/M-2roughness+map.png"
     },
     stoned : {
         name : "stoned",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-3-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-3/M-3.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-3/M-3.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-3/M-3roughness+map.png"
     },
     hemp : {
         name : "hemp",
+        id : "M-4",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-4-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-4/M-4.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-4/M-4.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-4/M-4roughness+map.png"
     },
     croco : {
         name : "croco",
-        id : "M-7",
+        id : "M-5",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-5-icon.png", 
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-5/M-5.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-8/M-8normal+map.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-5/M-5roughness+map.png"
@@ -40,6 +47,7 @@ const textures = {
     reptile : {
         name : "croco",
         id : "M-6",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-6-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-6/M-6.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-6/M-6normal.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-6/M-6roughness.png"
@@ -47,6 +55,7 @@ const textures = {
     leaf : {
         name : "leaf",
         id : "M-7",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-7-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-7/M-7.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-7/M-7normal.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-7/M-7roughness.png"
@@ -54,6 +63,7 @@ const textures = {
     softCroco : {
         name : "softCroco",
         id : "M-8",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-8-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-8/M-8.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-8/M-8normal+map.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-8/M-8roughness+map.png"
@@ -61,6 +71,7 @@ const textures = {
     kite : {
         name : "kite",
         id : "M-9",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-9-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-9/M-9.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-9/M-9normal.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-9/M-9roughness+map.png"
@@ -68,12 +79,14 @@ const textures = {
     gutting : {
         name : "gutting",
         id : "M-10",
+        icon_link :"https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-10-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-10/m-10.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-10/M-10normal.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-10/m-10roughness+map.png"
     },
     moorlandGrain : {
         name : "moorlandGrain",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/moorlandGrain/baseColor.jpg",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/moorlandGrain/baseColor.jpg",
         heightMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/moorlandGrain/height.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/moorlandGrain/normal.jpg",
