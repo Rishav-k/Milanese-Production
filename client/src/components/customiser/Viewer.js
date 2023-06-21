@@ -69,7 +69,8 @@ const handleClick = (event) => {
     event.stopPropagation();
   };
   return (
-    <mesh onClick={handleClick}  >
+    
+    <mesh onClick={handleClick} position={[0, -0.5 , 0]} rotation={[-0.3, 0, 0]} >
       <group group ref={shoeComponents} >
       <Suspense>
         <primitive object={gltf.scene} />

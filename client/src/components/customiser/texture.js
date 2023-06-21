@@ -1,4 +1,12 @@
 const textures = {
+    floral:{
+        name: "floral",
+        id : "ML-11",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11.png",
+        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11.png",
+        normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11normal.png",
+        roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11roughness.png"
+    },
     alligator : {
         name : "alligator",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Alligator+leather/color_map.jpg",

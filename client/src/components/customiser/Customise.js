@@ -92,10 +92,10 @@ function handleTexture(id){
    const r = textureLoader.load(txture.roughnessMap);
    const a = textureLoader.load(txture.aoMap);
 
-                   c.repeat.set(5   , 5   );
-                   h.repeat.set(5   , 5   );
-                   n.repeat.set(5   , 5   );
-                   r.repeat.set(5   , 5   );
+                   c.repeat.set(3   , 3   );
+                   h.repeat.set(3   , 3   );
+                   n.repeat.set(3   , 3   );
+                   r.repeat.set(3   , 3   );
 
                    c.wrapS = c.wrapT = THREE.RepeatWrapping;
                    n.wrapS = n.wrapT = THREE.RepeatWrapping;
@@ -121,7 +121,7 @@ function handleTexture(id){
 const textureButtons = [];
 shoe.components[i].textures.forEach((item , index)=>{
                  textureButtons.push(<div key = {index} className = "texture-name" name={item.id} onClick={()=>{ setFlag(true); texture[i] = index;
-     setJ(j);  handleTexture(item.id);console.log(item.id);console.log(textures[item.id]);}}><div className='texture-image' ><img src = {textures[item.id].icon_link} alt = "img" /></div><div className='small-texture-name'>{item.name}</div></div>)
+     setJ(j);  handleTexture(item.id);console.log(item.id);console.log(textures[item.id]);}}><div className='texture-image' ><img src = {textures[item.id].icon_link} alt = "Loading..." /></div><div className='small-texture-name'>{item.name}</div></div>)
              })
 
 function handleColor(id){
@@ -169,16 +169,19 @@ var divStyle = {
     </div>
 
 
-        <Canvas shadows camera={{ position: [ 3 ,3 ,0], fov: 50 }} scale = {[1,1,1]} style={{ background: "#FFFFFF" }}>
+        <Canvas shadows camera={{ position: [ 8 ,10 ,0], fov: 20 }} scale = {[1,1,1]} style={{ background: "#FFFFFF" }}>
           <axesHelper args={[5]} />
-          <directionalLight  intensity={0.5} position={[0, 20, 10]}castShadow />
+          {/* <Environment files="./assets/env.exr" background blur={0.5} /> */}
+          <directionalLight  intensity={0.2} position={[0, 10, 10]} castShadow shadow-mapSize-height={1024}
+  shadow-mapSize-width={1024}/>
+          <directionalLight  intensity={0.2} position={[0, -10, 10]} />
           <ambientLight intensity={0.5} />
           <spotLight intensity={1} angle={0.5} penumbra={0} position={[0 , 1000, 0]} castShadow />
           <hemisphereLight intensity={0.8} color="white" groundColor="black" />
            <Viewer shoe = {shoe.link} blink ={blink} component={component}  update = {flag} ConClick = {getComponent} color = {col} colorMap = {colorMap}    heightMap = {heightMap} normalMap ={normalMap} roughnessMap = {roughnessMap} aoMap = {aoMap} isStartOver={isStartOver}/>
           
-           <ContactShadows position={[0, -0.8, 0]} opacity={0.25} scale={10} blur={1.5} far={0.8} />
-          <OrbitControls minPolarAngle={Math.PI/6} maxPolarAngle={Math.PI} enableZoom={true} enablePan={false} />
+           <ContactShadows position={[0, -0.9, -0.05]} opacity={1} scale={20} blur={1} far={1} />
+          <OrbitControls minPolarAngle={Math.PI/12} maxPolarAngle={Math.PI*9/13} enableZoom={true} enablePan={false} />
        </Canvas>
 
       <div className = "editor" style = {divStyle} >
@@ -222,7 +225,7 @@ var divStyle = {
         <div className = "done-div-container done-div-container-2">
            <div className = "left"><div><span className = "price"> <BsCurrencyRupee/> {shoe.price}</span><span><br/>  Expected delivery in 1 week</span></div>
            </div>
-           <div className = "right"><NavLink to={`address`}><div className = "done">Done </div></NavLink> </div>
+           <div className = "right"><NavLink to={`address`}><div className = "done"><span>Done </span></div></NavLink> </div>
         </div>
     </div>
       

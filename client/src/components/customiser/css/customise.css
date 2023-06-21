@@ -225,11 +225,15 @@ font-family: 'Inter';
     width : 116px;
     height : 40px;
     border-radius:  27px;
-    background-color: black;
+    background-color:#BB9357; 
+    text-decoration: none;
     color : white;
     display:flex;
     justify-content: center;
     align-items: center;
+}
+.done-div-container .right NavLink{
+    text-decoration: none;
 }
 .texture-name{
     width: 64px;
@@ -254,11 +258,9 @@ font-family: 'Inter';
 .texture-image {
     width : 64px;
         height : 32px;
-    width: 100%;
+    /* width: 100%; */
     
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   
     border: none;
     overflow: hidden;
 }
