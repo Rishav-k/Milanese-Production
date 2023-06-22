@@ -28,12 +28,11 @@ import {textures} from './texture.js';
 
 var texture = [];
 var color = [];
-for(var k = 0 ; k <20 ; k++){
+for(var k = 0 ; k <10 ; k++){
    texture[k] = 0;
    color[k] = 0;
 }
 
-console.log(color);
 console.log("HELLO");
 var component;
 function initials(shoe){
@@ -46,6 +45,8 @@ function Customise({shoe}) {
      useEffect(()=>{
       initials(shoe);
      })
+     console.log(texture);
+     console.log(color);
   
 
      const [flag , setFlag] = useState(false);
@@ -85,7 +86,7 @@ const [roughnessMap , setRoughnessMap] = useState(null);
 const [aoMap , setAoMap] = useState(null);  
 //Handle Texture Change
 function handleTexture(id){
-   console.log(texture);
+  //  console.log(texture);
    var txture  = textures[id];
    setCol(shoe.components[i].textures[texture[i]].color[0].code);
    var textureLoader = new TextureLoader();
@@ -124,7 +125,7 @@ function handleTexture(id){
 const textureButtons = [];
 shoe.components[i].textures.forEach((item , index)=>{
    textureButtons.push(<div key = {index} className = "texture-name" name={item.id} onClick={()=>{ setFlag(true); texture[i] = index;
-     setJ(j);  handleTexture(item.id);console.log(item.id);}}><div className='texture-image' ><img src ={textures[item.id].icon_link} alt = "Loading..." /></div><div className='small-texture-name'>{item.name}</div></div>)
+     setJ(j);  handleTexture(item.id);console.log(item.id);}}><div className = {texture[i] === index ? 'texture-image-active' : 'texture-image'} ><img src ={textures[item.id].icon_link} alt = "Loading..." /></div><div className='small-texture-name'>{item.name}</div></div>)
              })
 
 function handleColor(id){
@@ -134,7 +135,7 @@ function handleColor(id){
 //color Button from shoe.js
 const colorButtons = [];
 shoe.components[i].textures[texture[i]].color.forEach((item , index)=>{
-                 colorButtons.push(<div key= {index} className = "color-name"  onClick={()=>{color[i] = index ; console.log(item);handleColor(item.code);}}><div className="small-color-div" style={{ backgroundColor: item.code }}></div>
+                 colorButtons.push(<div key= {index} className = "color-name"  onClick={()=>{color[i] = index ; console.log(item);handleColor(item.code);}}><div className={color[i]===index ? "small-color-div-active":"small-color-div"} style={{ backgroundColor: item.code }}></div>
 <div className="small-color-name">{item.name}</div></div>)
              }) 
 
