@@ -61,7 +61,10 @@ function Customise({shoe}) {
     // const [texture , setTexture] = useState('');
     function getComponent(name){
       for(var k = 0 ; k < shoe.components.length ; k++){
-         if(shoe.components[k].meshName === name){
+         if(name === "sole"){
+          console.log("hello sole");
+         }
+         else if(shoe.components[k].meshName === name){
             setFlag(false);
             setI(k);
             setBlink(true);
@@ -120,8 +123,8 @@ function handleTexture(id){
 //Texture Buttons from shoe.js
 const textureButtons = [];
 shoe.components[i].textures.forEach((item , index)=>{
-                 textureButtons.push(<div key = {index} className = "texture-name" name={item.id} onClick={()=>{ setFlag(true); texture[i] = index;
-     setJ(j);  handleTexture(item.id);console.log(item.id);}}><div className='texture-image' ><img src = {textures[item.id].icon_link} alt = "Loading..." /></div><div className='small-texture-name'>{item.name}</div></div>)
+   textureButtons.push(<div key = {index} className = "texture-name" name={item.id} onClick={()=>{ setFlag(true); texture[i] = index;
+     setJ(j);  handleTexture(item.id);console.log(item.id);}}><div className='texture-image' ><img src ={textures[item.id].icon_link} alt = "Loading..." /></div><div className='small-texture-name'>{item.name}</div></div>)
              })
 
 function handleColor(id){
@@ -170,11 +173,11 @@ var divStyle = {
 
 
         <Canvas shadows camera={{ position: [ 8 ,10 ,0], fov: 20 }} scale = {[1,1,1]} style={{ background: "#FFFFFF" }}>
-          <axesHelper args={[5]} />
+          {/* <axesHelper args={[5]} /> */}
           {/* <Environment files="./assets/env.exr" background blur={0.5} /> */}
           <directionalLight  intensity={0.2} position={[0, 10, 10]} castShadow shadow-mapSize-height={1024}
   shadow-mapSize-width={1024}/>
-          <directionalLight  intensity={0.2} position={[0, -10, 10]} />
+          <directionalLight  intensity={1} position={[0, -10, 10]} />
           <ambientLight intensity={0.5} />
           <spotLight intensity={1} angle={0.5} penumbra={0} position={[0 , 1000, 0]} castShadow />
           <hemisphereLight intensity={0.8} color="white" groundColor="black" />

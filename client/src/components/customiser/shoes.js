@@ -5,6 +5,16 @@ const shoes = {
         id : "8385974993212",
         link : 'https://milaneseleather3d.s3.ap-south-1.amazonaws.com/MonkStrap/scene+(11).glb',
         components : [{
+            name : "Sole",
+            meshName : "sole",
+            textures : [{
+                name : "Plain",
+                id : "plain",
+                color : [{name : "Brown" ,code :"#3C2A21"},
+                            {name : "Black" ,code : "#2C3333"},
+                        {name : "Light Brown" ,code : "#562B08"}]
+            }]
+        },{
             name : "Toe" ,
             meshName : "Part_1",
             textures : [{

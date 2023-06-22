@@ -1,11 +1,17 @@
 const textures = {
+    plain : {
+        name : "plain",
+        id : "sole-texture",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Plain/plain.jpg",
+        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Plain/plain.jpg"
+    },
     floral:{
         name: "floral",
         id : "ML-11",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11.png",
-        normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11normal.png",
-        roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11roughness.png"
+        normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11normalblur.png",
+        roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11roughness+(1).png"
     },
     alligator : {
         name : "alligator",
