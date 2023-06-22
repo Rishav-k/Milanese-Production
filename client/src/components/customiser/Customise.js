@@ -62,10 +62,7 @@ function Customise({shoe}) {
     // const [texture , setTexture] = useState('');
     function getComponent(name){
       for(var k = 0 ; k < shoe.components.length ; k++){
-         if(name === "sole"){
-          console.log("hello sole");
-         }
-         else if(shoe.components[k].meshName === name){
+         if(shoe.components[k].meshName === name){
             setFlag(false);
             setI(k);
             setBlink(true);
