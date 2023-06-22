@@ -219,9 +219,10 @@ var divStyle = {
         </div>
       
         </div>
-
-
-
+        <div>
+          <h3>Sole</h3>
+          <div></div>
+        </div>
 
         <div className = "done-div-container done-div-container-2">
            <div className = "left"><div><span className = "price"> <BsCurrencyRupee/> {shoe.price}</span><span><br/>  Expected delivery in 1 week</span></div>

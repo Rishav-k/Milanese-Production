@@ -3,7 +3,7 @@ const textures = {
         name : "plain",
         id : "sole-texture",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Plain/plain.jpg",
-        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Plain/plain.jpg"
+        // colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Plain/plain.jpg"
     },
     floral:{
         name: "floral",

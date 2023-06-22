@@ -23,7 +23,7 @@ const Checkout = () => {
   "draft_order": {
     "line_items": [
       {
-        "variant_id": 45325892813116,
+        "variant_id": 45492459176252,
         "quantity": 1
       }
     ],
@@ -48,6 +48,7 @@ const header = {
    axios.post('/get_payload_for_paymnetOrder' , details , {header}).then((response)=>{
        
     const payload = response.data;
+    console.log(payload);
     const headers = {
       'Content-Type' : 'application/json'
       };
