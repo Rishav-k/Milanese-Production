@@ -88,7 +88,7 @@ function handleTexture(id){
    var textureLoader = new TextureLoader();
    const c = textureLoader.load(txture.colorMap);
    const h = textureLoader.load(txture.heightMap);
-   const n =  textureLoader.load(txture.normalMap);
+   const n = textureLoader.load(txture.normalMap);
    const r = textureLoader.load(txture.roughnessMap);
    const a = textureLoader.load(txture.aoMap);
 
@@ -121,7 +121,7 @@ function handleTexture(id){
 const textureButtons = [];
 shoe.components[i].textures.forEach((item , index)=>{
                  textureButtons.push(<div key = {index} className = "texture-name" name={item.id} onClick={()=>{ setFlag(true); texture[i] = index;
-     setJ(j);  handleTexture(item.id);console.log(item.id);console.log(textures[item.id]);}}><div className='texture-image' ><img src = {textures[item.id].icon_link} alt = "Loading..." /></div><div className='small-texture-name'>{item.name}</div></div>)
+     setJ(j);  handleTexture(item.id);console.log(item.id);}}><div className='texture-image' ><img src = {textures[item.id].icon_link} alt = "Loading..." /></div><div className='small-texture-name'>{item.name}</div></div>)
              })
 
 function handleColor(id){
