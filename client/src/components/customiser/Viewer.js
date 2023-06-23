@@ -6,6 +6,7 @@ import './css/customise.css';
 const Viewer = (props) =>{ 
   console.log(props.isStartOver) ;
   const gltf = useLoader(GLTFLoader, props.shoe);
+  const sole = useLoader(GLTFLoader , props.soleLink);
   console.log(props);
   // if(props.isStartOver === true){
 
@@ -74,8 +75,10 @@ const handleClick = (event) => {
       <group group ref={shoeComponents} >
       <Suspense>
         <primitive object={gltf.scene} />
+        <primitive object={sole.scene} />
        </Suspense>
       </group>
     </mesh>
+    
 )}
 export default Viewer;  

@@ -18,14 +18,15 @@ import {AiOutlineReload }from  "react-icons/ai";
 import {BsShuffle }from  "react-icons/bs";
 //-----------------------------------------------    local file access     --------------------------------------------//
 import {textures} from './texture.js';
-
+import {sole} from './sole.js';
 // import {shoe} from './shoe.js';
 // import {shoes} from './shoes.js';
 
 // var txt = textures.perforated;
 // var shoe = shoes[8385974993212] ;
 // console.log(shoe);
-
+// console.log(textures[moorlandGrain]);
+// console.log(sole.bootSole);
 var texture = [];
 var color = [];
 for(var k = 0 ; k <10 ; k++){
@@ -80,7 +81,9 @@ const [colorMap , setColorMap] = useState(null);
 const [heightMap , setHeightMap] = useState(null);
 const [normalMap , setNormalMap] = useState(null);
 const [roughnessMap , setRoughnessMap] = useState(null);  
-const [aoMap , setAoMap] = useState(null);  
+const [aoMap , setAoMap] = useState(null); 
+const [soleLink , setSoleLink] = useState(sole.bootSole.link)
+
 //Handle Texture Change
 function handleTexture(id){
   //  console.log(texture);
@@ -179,7 +182,7 @@ var divStyle = {
           <ambientLight intensity={0.5} />
           <spotLight intensity={1} angle={0.5} penumbra={0} position={[0 , 1000, 0]} castShadow />
           <hemisphereLight intensity={0.8} color="white" groundColor="black" />
-           <Viewer shoe = {shoe.link} blink ={blink} component={component}  update = {flag} ConClick = {getComponent} color = {col} colorMap = {colorMap}    heightMap = {heightMap} normalMap ={normalMap} roughnessMap = {roughnessMap} aoMap = {aoMap} isStartOver={isStartOver}/>
+           <Viewer shoe = {shoe.link} blink ={blink} component={component}  update = {flag} ConClick = {getComponent} color = {col} colorMap = {colorMap}    heightMap = {heightMap} normalMap ={normalMap} roughnessMap = {roughnessMap} aoMap = {aoMap} isStartOver={isStartOver} soleLink = {soleLink}/>
           
            <ContactShadows position={[0, -0.9, -0.05]} opacity={1} scale={20} blur={1} far={1} />
           <OrbitControls minPolarAngle={Math.PI/12} maxPolarAngle={Math.PI*9/13} enableZoom={true} enablePan={false} />
@@ -221,7 +224,11 @@ var divStyle = {
         </div>
         <div>
           <h3>Sole</h3>
-          <div></div>
+          <div><button onClick = {()=>{
+            setSoleLink(sole.plainSole.link)
+          }}>sole1</button><button onClick = {()=>{
+            setSoleLink(sole.bootSole.link)
+          }}>sole2</button></div>
         </div>
 
         <div className = "done-div-container done-div-container-2">
