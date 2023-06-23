@@ -29,11 +29,11 @@ function App() {
      <Routes>
      <Route path= "test" element={<Test/>} />
      <Route path="signin" element = {<SignIn/>} />
-      <Route path = "signup" element ={<SignUp />} />
+     <Route path = "signup" element ={<SignUp />} />
       <Route path="/products/">
-           <Route index path=":id" element={<Dashboard />} />
-           <Route path=":id/address" element = {<Address />} />
            <Route path=":id/address/checkout" element={<Checkout />} />
+           <Route path=":id/address" element = {<Address />} />
+           <Route index path=":id" element={<Dashboard />} />
       </Route>
       
 
