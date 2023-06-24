@@ -1,12 +1,8 @@
 import React from 'react';
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 // import Customiser from './components/customiser/Customise.js'
 import SignUp from './components/signin/SignUp.js';
-
 import SignIn from './components/signin/SignIn.js';
-
 import Address from './components/orders/Address.js';
 import Checkout from './components/orders/Checkout.js';
 import FormContext from './components/context/FormContext.js';
@@ -27,6 +23,7 @@ function App() {
     <ProductContext.Provider value={{ product, updateProduct }}>
     <BrowserRouter>
      <Routes>
+
      <Route path= "test" element={<Test/>} />
      <Route path="signin" element = {<SignIn/>} />
      <Route path = "signup" element ={<SignUp />} />

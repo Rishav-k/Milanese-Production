@@ -6,7 +6,7 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader';
 import * as THREE from 'three';
 // import Signin from './components/signin/signin.js';
 import './css/customise.css';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import { useParams } from "react-router-dom";
 
 import {BsCurrencyRupee }from  "react-icons/bs";
@@ -82,7 +82,7 @@ const [heightMap , setHeightMap] = useState(null);
 const [normalMap , setNormalMap] = useState(null);
 const [roughnessMap , setRoughnessMap] = useState(null);  
 const [aoMap , setAoMap] = useState(null); 
-const [soleLink , setSoleLink] = useState(sole.bootSole.link)
+const [soleLink , setSoleLink] = useState(sole[shoe.sole[0].id].link)
 
 //Handle Texture Change
 function handleTexture(id){
@@ -139,7 +139,8 @@ shoe.components[i].textures[texture[i]].color.forEach((item , index)=>{
 <div className="small-color-name">{item.name}</div></div>)
              }) 
 
-          component = shoe.components[i].meshName ;
+
+      component = shoe.components[i].meshName ;
           
 // setComponent(shoe.components[i].meshName);
 
@@ -148,6 +149,14 @@ const detailButtons = [];
 shoe.components.forEach((item  , index)=>{
   detailButtons.push(<div className={`component-items`} onClick={()=>{setFlag(false) ;setI(index); setJ(texture[i]); setBlink(true)}}> {item.name} <FaCheck className={ i!==index ? 'component-item-check' : ''}/> </div>);
 
+});
+
+
+// Sole Buttons 
+
+const soleButtons = [];
+shoe.sole.forEach((item , index)=>{
+  soleButtons.push(<div className = "sole-items" onClick = {()=>{ setSoleLink(sole[item.id].link)}}> <div className ="sole-image"> <img src = {sole[item.id].icon} alt = "img" /> </div>   <div className='sole-name'> {sole[item.id].name} </div>  </div>)
 })
 
 // const viewerElement = [];
@@ -222,19 +231,20 @@ var divStyle = {
         </div>
       
         </div>
-        <div>
-          <h3>Sole</h3>
-          <div><button onClick = {()=>{
+        <div className='selector-name'> 
+          <div className = "selector-type"><span className = "selector-type-txt">sole</span></div>
+          {soleButtons}
+          {/* <div><button onClick = {()=>{
             setSoleLink(sole.plainSole.link)
           }}>sole1</button><button onClick = {()=>{
             setSoleLink(sole.bootSole.link)
-          }}>sole2</button></div>
+          }}>sole2</button></div> */}
         </div>
 
         <div className = "done-div-container done-div-container-2">
            <div className = "left"><div><span className = "price"> <BsCurrencyRupee/> {shoe.price}</span><span><br/>  Expected delivery in 1 week</span></div>
            </div>
-           <div className = "right"><NavLink to={`address`}><div className = "done"><span>Done </span></div></NavLink> </div>
+           <div className = "right"><Link to={`address`}><div className = "done"><span>Done </span></div></Link> </div>
         </div>
     </div>
       

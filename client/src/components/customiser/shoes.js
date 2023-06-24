@@ -4,17 +4,9 @@ const shoes = {
         price : 13499,
         id : "8385974993212",
         link : 'https://milaneseleather3d.s3.ap-south-1.amazonaws.com/MonkStrap/scene+(17).glb',
+        sole : [{ id : "ML-9_S-1"},
+                { id : "ML-9_S-2"}],
         components : [{
-            name : "Sole",
-            meshName : "sole",
-            textures : [{
-                name : "Plain",
-                id : "plain",
-                color : [{name : "Brown" ,code :"#3C2A21"},
-                            {name : "Black" ,code : "#2C3333"},
-                        {name : "Light Brown" ,code : "#562B08"}]
-            }]
-        },{
             name : "Toe" ,
             meshName : "Part_1",
             textures : [{
@@ -772,6 +764,8 @@ const shoes = {
         price : 13499,
         id : "8369670914364",
         link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/yes_shoes.glb",
+        sole : [{id : "ML_S-1"},
+                {id : "ML_S-2"}],
         components : [{
             name : "Vamp",
             meshName : "shoe_body_1",

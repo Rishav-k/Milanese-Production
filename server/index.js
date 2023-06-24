@@ -15,7 +15,7 @@ app.get('/',(req,res)=>{
   res.send("Welcome to Server of Milanese Leather ");
 })
 
-app.post('/signup' , async (req,res)=>{
+app.post('/api/signup' , async (req,res)=>{
   console.log(req.body);
   // const data = req.body;
   const requestData = {
@@ -55,7 +55,7 @@ app.post('/signup' , async (req,res)=>{
 })
 
 
-app.get('/authenticate' , async (req,res)=>{
+app.get('/api/authenticate' , async (req,res)=>{
   console.log("hello world");
   console.log(req.cookies.rishav);
 
@@ -97,7 +97,7 @@ const graphqlEndpoint = 'https://estro-schuster-1.myshopify.com/api/2023-04/grap
   });
 });
 
-app.post('/get_auth_token' , async(req,res)=>{
+app.post('/api/get_auth_token' , async(req,res)=>{
   const {email , password}  = req.body;
   console.log(email ,password);
   try {
@@ -153,7 +153,7 @@ app.post('/get_auth_token' , async(req,res)=>{
 
 
 
-app.post('/get_Payment_Order_Session_ID' , async (req,res)=>{
+app.post('/api/get_Payment_Order_Session_ID' , async (req,res)=>{
   //  console.log(req.body);
   const data = await req.body;
   // console.log(data);
@@ -183,7 +183,7 @@ app.post('/get_Payment_Order_Session_ID' , async (req,res)=>{
   });
 });
 
-app.post('/get_payload_for_paymnetOrder', async (req, res) => {
+app.post('/api/get_payload_for_paymnetOrder', async (req, res) => {
   try {
     const details = await req.body;
 
@@ -222,7 +222,7 @@ app.post('/get_payload_for_paymnetOrder', async (req, res) => {
 });
 
 
-app.get('/get_product_details' , async (req , res)=>{
+app.get('/api/get_product_details' , async (req , res)=>{
      console.log(" i am hit ");
 
      console.log(req.query.param);
