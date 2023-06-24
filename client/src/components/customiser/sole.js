@@ -1,7 +1,7 @@
 const sole = {
     bootSole : {
         id  :  "S-1",
-        link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/soles/scene+(12).glb"
+        link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/MonkStrap/scene+(18).glb"
     },
     plainSole : {
         id : "S-2",

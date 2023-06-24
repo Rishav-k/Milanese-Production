@@ -3,9 +3,13 @@ const axios = require('axios');
 const app = express();
 const cookieParser = require('cookie-parser');
 const { error } = require('console');
+const dotenv = require('dotenv');
 
 app.use(express.json());
 app.use(cookieParser());
+
+
+dotenv.config({path : './config.env'});
 
 app.get('/',(req,res)=>{
   res.send("Welcome to Server of Milanese Leather ");

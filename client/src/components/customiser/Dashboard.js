@@ -4,17 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { shoes } from './shoes.js';
 import { useParams } from 'react-router-dom';
 
-var shoe = shoes[8385974993212];
 const Dashboard = () => {
   const params = useParams();
 
   const [fetchComplete, setFetchComplete] = useState(false);
   const [gotShoe, setGotShoe] = useState(false);
+  const [shoe ,setShoe] = useState();
   const navigate = useNavigate();
   const getShoesDetails = async (id) => {
     console.log(id);
     try {
-      shoe = shoes[id];
+      setShoe(shoes[id]);
       if (shoe) {
         setGotShoe(true);
       }
