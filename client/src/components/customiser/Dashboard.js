@@ -11,7 +11,7 @@ var callProduct = true;
 const Dashboard = () => {
   const params = useParams();
   const {  updateProduct } = useContext(ProductContext);
-  const {   updateCustomer } = useContext(CustomerContext);
+  const {  updateCustomer } = useContext(CustomerContext);
   const [fetchComplete, setFetchComplete] = useState(false);
   const [gotShoe, setGotShoe] = useState(false);
   // const [gotProduct, setGotProduct] = useState(false);
@@ -73,17 +73,19 @@ const Dashboard = () => {
     setFetchComplete(true);
   } catch (error) {
     console.log('Error received:', error);
-    navigate('/signin');
+    // navigate('/signin');
   }
 };
 if(callProduct){
    getProductDetails(params.id);
 }
-
-  useEffect(() => {
-    callDashboardPage();
+if(!fetchComplete || !gotShoe){
+   callDashboardPage();
     getShoesDetails(params.id);
-});
+    setFetchComplete(true);
+    setGotShoe(true);
+  }
+    
 
   return (
     <div>
