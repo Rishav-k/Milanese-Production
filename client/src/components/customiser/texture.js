@@ -1,48 +1,107 @@
 const textures = {
-    plain : {
-        name : "plain",
-        id : "sole-texture",
-        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Plain/plain.jpg",
-        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Plain/plain.jpg"
-    },
-    floral:{
+    "M-12" : {
+        name : "Fin",
+        id : "M-12",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-12-icon.png",
+        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-12/M-12.png",
+        nomalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-12/M-12normal.png",
+        roghnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-12/M-12roughnessmap.png"
+   },
+   "M-13" : {
+        name : "Exotic Reptile",
+        id : "M-13",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-13-icon.png",
+        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-13/m-13.png",
+        nomalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-13/normal+map.png",
+        roghnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-13/roughness+map.png"    
+   },
+   "M-14" : {
+        name : "Wave",
+        id : "M-14",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-14-icon.png",
+        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-14/M-14.png",
+        nomalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-14/m-14+normal+map.png",
+        roghnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-14/roughness.png"
+   },
+   "M-15" : {
+        name : "Hard Croco",
+        id : "M-15",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-15-icon.png",
+        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-15/m-15.png",
+        nomalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-15/m-15.png",
+        roghnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-15/m-15+roughness.png"
+   },
+   "M-16" : {
+        name : "Alligator",
+        id : "M-16",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-16-icon.png",
+        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-16/m-16.png",
+        nomalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-16/m-16+normal+map.png",
+        roghnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-16/roughness+map.png"
+   },
+   "M-19" : {
+        name : "Snake",
+        id : "M-19",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-19-icon.png",
+        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-19/M-19.png",
+        nomalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-19/M-19normal+map.png",
+        roghnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-19/M-19roughness+map.png"
+   },
+   "M-20" : {
+        name : "Jaipuria",
+        id : "M-20",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-20-icon.png",
+        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-20/M-20.png",
+        nomalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-20/M-20normal.png",
+        roghnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-20/M-20roughness.png"
+   },
+   "M-23" : {
+        name : "Belarus",
+        id : "M-23",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-23-icon.png",
+        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-23/M-23.png",
+        nomalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-23/M-23normal.png",
+        roghnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-23/M-23roughness.png"
+   },
+   "M-24" : {
+        name : "Morelete",
+        id : "M-24",
+        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-24-icon.png",
+        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-24/M-24.png",
+        nomalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-24/M-24normal.png",
+        roghnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-24/M-24roughness.png"
+   },
+    "M-11":{
         name: "floral",
-        id : "ML-11",
-        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11.png",
+        id : "M-11",
+        icon_link : "https://img.freepik.com/free-vector/flower-seamless-pattern-background_1217-740.jpg",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11.png",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11normalblur.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/M-11roughness+(1).png"
     },
-    alligator : {
-        name : "alligator",
-        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Alligator+leather/color_map.jpg",
-        colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Alligator+leather/color_map.jpg",
-        normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Alligator+leather/normal_map_opengl.jpg",
-        roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Alligator+leather/roughness_map.jpg",
-        aoMap :"https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/Alligator+leather/ao_map.jpg"
-    },
-    quartz : {
+     "M-1" : {
         name : "quartz",
+        id : "M-1",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-1-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-1/M-1.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-1/M-1normal-map.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-1/M-1roughness+ma.png"
     },
-    net : {
+    "M-2" : {
         name : "net",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-2-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-2/M-2.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-2/M-2normal.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-2/M-2roughness+map.png"
     },
-    stoned : {
+    "M-3" : {
         name : "stoned",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-3-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-3/M-3.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-3/M-3.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-3/M-3roughness+map.png"
     },
-    hemp : {
+    "M-4" : {
         name : "hemp",
         id : "M-4",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-4-icon.png",
@@ -50,48 +109,48 @@ const textures = {
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-4/M-4.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-4/M-4roughness+map.png"
     },
-    croco : {
-        name : "croco",
+    "M-5" : {
+        name : "Croco",
         id : "M-5",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-5-icon.png", 
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-5/M-5.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-8/M-8normal+map.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-5/M-5roughness+map.png"
     },
-    reptile : {
-        name : "croco",
+    "M-6" : {
+        name : "Reptile",
         id : "M-6",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-6-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-6/M-6.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-6/M-6normal.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-6/M-6roughness.png"
     },
-    leaf : {
-        name : "leaf",
+    "M-7" : {
+        name : "Leaf",
         id : "M-7",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-7-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-7/M-7.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-7/M-7normal.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-7/M-7roughness.png"
     },
-    softCroco : {
-        name : "softCroco",
+    "M-8" : {
+        name : "Soft Croco",
         id : "M-8",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-8-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-8/M-8.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-8/M-8normal+map.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-8/M-8roughness+map.png"
     },
-    kite : {
-        name : "kite",
+    "M-9" : {
+        name : "Kite",
         id : "M-9",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-9-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-9/M-9.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-9/M-9normal.png",
         roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-9/M-9roughness+map.png"
     },
-    gutting : {
-        name : "gutting",
+    "M-10" : {
+        name : "Gutting",
         id : "M-10",
         icon_link :"https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-10-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-10/m-10.jpg",

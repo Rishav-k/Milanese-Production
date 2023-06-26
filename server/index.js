@@ -56,8 +56,8 @@ app.post('/api/signup' , async (req,res)=>{
 
 
 app.get('/api/authenticate' , async (req,res)=>{
-  console.log("hello world");
-  console.log(req.cookies.rishav);
+  console.log("authenticate");
+  // console.log(req.cookies.rishav);
 
 const graphqlEndpoint = 'https://estro-schuster-1.myshopify.com/api/2023-04/graphql.json';
    const token = req.cookies.rishav; // Store the access token in the 'token' variable
@@ -80,13 +80,21 @@ const graphqlEndpoint = 'https://estro-schuster-1.myshopify.com/api/2023-04/grap
   };
 
   axios.post(graphqlEndpoint, query, { headers })
-  .then((response) => {
-    console.log(response.data);
+  .then(async (response) => {
+    console.log(response.data.data.customer);
     if (!response.data.data.customer) {
         throw new Error('Customer not found'); // Throw an error
       }
-       res.status(200).send(response.data); 
-   
+      const customer = response.data.data.customer;
+      const input = customer.id;
+      const id = input.split('/').pop();
+      console.log(id);
+      const data = {
+        "id" : id,
+        "name" : customer.firstName + " " + customer.lastName,
+        "email" : customer.email
+      }
+       res.send(data);
     // Handle the response data from the Shopify API
   })
   .catch((error) => {
@@ -95,6 +103,7 @@ const graphqlEndpoint = 'https://estro-schuster-1.myshopify.com/api/2023-04/grap
     res.status(400).json("Unauthorised User")
     // Handle any errors that occurred during the request
   });
+  
 });
 
 app.post('/api/get_auth_token' , async(req,res)=>{
@@ -223,11 +232,11 @@ app.post('/api/get_payload_for_paymnetOrder', async (req, res) => {
 
 
 app.get('/api/get_product_details' , async (req , res)=>{
-     console.log(" i am hit ");
+     console.log(" get_product_details ");
 
-     console.log(req.query.param);
+    //  console.log(req.query.params);
 
-     const product_id = await req.query.param;
+     const product_id = await req.query.params;
      
      axios.get(`https://estro-schuster-1.myshopify.com/admin/api/2023-01/products/${product_id}.json` , {headers : {
       'X-Shopify-Access-Token' : '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'
@@ -247,11 +256,11 @@ app.get('/api/get_product_details' , async (req , res)=>{
         price : product_data.variants[0].price, 
         vendor : product_data.vendor ,
         variants : variants};
-      console.log(data_to_send);
+      // console.log(data_to_send);
       res.send(data_to_send);
      })
      .catch(err => {
-      console.log(err);
+      // console.log(err);
       res.send("Error in getting the product details");
       console.log("ERROR IN GETTING PRODUCT DETAILS");
      })

@@ -5,22 +5,31 @@ import SignUp from './components/signin/SignUp.js';
 import SignIn from './components/signin/SignIn.js';
 import Address from './components/orders/Address.js';
 import Checkout from './components/orders/Checkout.js';
+import Dashboard from './components/customiser/Dashboard.js';
+import Test from './components/orders/Test.js';
+
 import FormContext from './components/context/FormContext.js';
 import useForm from './components/context/useForm.js';
-import Test from './components/orders/Test.js';
+
 import ProductContext from './components/context/ProductContext.js';
 import useProduct from './components/context/useProduct.js';
-import Dashboard from './components/customiser/Dashboard.js';
+
+import CustomerContext from './components/context/CustomerContext.js';
+import useCustomer from './components/context/useCustomer.js';
+
 
 function App() {
 
   const { formData, updateFormData } = useForm();
   const { product, updateProduct } = useProduct();
+  const {customer , updateCustomer} = useCustomer();
 
   return (
     <div className="App">
+    <CustomerContext.Provider value = {{customer , updateCustomer}}>
     <FormContext.Provider value={{ formData, updateFormData }}>
     <ProductContext.Provider value={{ product, updateProduct }}>
+    
     <BrowserRouter>
      <Routes>
 
@@ -39,8 +48,10 @@ function App() {
      <Route path="/products/:id/checkout" element={<Checkout />}></Route> */}
      </Routes>
      </BrowserRouter>
+
      </ProductContext.Provider>
      </FormContext.Provider>
+          </CustomerContext.Provider>
     </div>
   );
 }

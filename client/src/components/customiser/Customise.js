@@ -1,4 +1,4 @@
-import React , { useState ,useEffect} from 'react';
+import React , { useState ,useEffect ,useContext} from 'react';
 import { Canvas } from '@react-three/fiber';
 import Viewer from './Viewer.js';
 import { OrbitControls ,ContactShadows } from '@react-three/drei';
@@ -22,6 +22,10 @@ import {sole} from './sole.js';
 // import {shoe} from './shoe.js';
 // import {shoes} from './shoes.js';
 
+
+//-----------------------------------------Contexts ------------------------------------------------------//
+import ProductContext from '../context/ProductContext';
+
 // var txt = textures.perforated;
 // var shoe = shoes[8385974993212] ;
 // console.log(shoe);
@@ -42,6 +46,7 @@ function initials(shoe){
 // var component = shoe.components[0].meshName;
 
 function Customise({shoe}) {
+  const {  product } = useContext(ProductContext);
   //  const params = useParams();
      useEffect(()=>{
       initials(shoe);
@@ -56,7 +61,7 @@ function Customise({shoe}) {
      const [j , setJ] = useState(0);
      const [blink , setBlink] = useState(false);
      const [col ,setCol] = useState(shoe.components[i].textures[texture[i]].color.code)
-
+     
 
      const [isStartOver , setIsStartOver] = useState(false);
    //  const [component ,setComponent] = useState(shoe.components[0].meshName);
@@ -83,7 +88,7 @@ const [normalMap , setNormalMap] = useState(null);
 const [roughnessMap , setRoughnessMap] = useState(null);  
 const [aoMap , setAoMap] = useState(null); 
 const [soleLink , setSoleLink] = useState(sole[shoe.sole[0].id].link)
-
+const [soleId , setSoleId] = useState(shoe.sole[0].id);
 //Handle Texture Change
 function handleTexture(id){
   //  console.log(texture);
@@ -125,7 +130,7 @@ function handleTexture(id){
 const textureButtons = [];
 shoe.components[i].textures.forEach((item , index)=>{
    textureButtons.push(<div key = {index} className = "texture-name" name={item.id} onClick={()=>{ setFlag(true); texture[i] = index;
-     setJ(j);  handleTexture(item.id);console.log(item.id);}}><div className = {texture[i] === index ? 'texture-image-active' : 'texture-image'} ><img src ={textures[item.id].icon_link} alt = "Loading..." /></div><div className='small-texture-name'>{item.name}</div></div>)
+     setJ(j);  handleTexture(item.id);console.log(item.id);}}><div className = {texture[i] === index ? 'texture-image-active' : 'texture-image'} ><img src ={textures[item.id].icon_link} alt = "Loading..." /></div><div className='small-texture-name'>{textures[item.id].name}</div></div>)
              })
 
 function handleColor(id){
@@ -156,7 +161,7 @@ shoe.components.forEach((item  , index)=>{
 
 const soleButtons = [];
 shoe.sole.forEach((item , index)=>{
-  soleButtons.push(<div className = "sole-items" onClick = {()=>{ setSoleLink(sole[item.id].link)}}> <div className ="sole-image"> <img src = {sole[item.id].icon} alt = "img" /> </div>   <div className='sole-name'> {sole[item.id].name} </div>  </div>)
+  soleButtons.push(<div className = "sole-name" onClick = {()=>{ setSoleId(item.id); setSoleLink(sole[item.id].link)}}> <div className = {soleId === item.id ? "sole-image-active" : "sole-image"} > <img src = {sole[item.id].icon} alt = "img" /> </div>   <div className='small-sole-name'> {sole[item.id].name} </div>  </div>)
 })
 
 // const viewerElement = [];
@@ -231,6 +236,7 @@ var divStyle = {
         </div>
       
         </div>
+        <hr></hr>
         <div className='selector-name'> 
           <div className = "selector-type"><span className = "selector-type-txt">sole</span></div>
           {soleButtons}
@@ -242,7 +248,7 @@ var divStyle = {
         </div>
 
         <div className = "done-div-container done-div-container-2">
-           <div className = "left"><div><span className = "price"> <BsCurrencyRupee/> {shoe.price}</span><span><br/>  Expected delivery in 1 week</span></div>
+           <div className = "left"><div><span className = "price"> <BsCurrencyRupee/> {product.price}</span><span><br/>  Expected delivery in 1 week</span></div>
            </div>
            <div className = "right"><Link to={`address`}><div className = "done"><span>Done </span></div></Link> </div>
         </div>

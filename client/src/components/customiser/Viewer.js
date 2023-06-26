@@ -7,6 +7,10 @@ const Viewer = (props) =>{
   console.log(props.isStartOver) ;
   const gltf = useLoader(GLTFLoader, props.shoe);
   const sole = useLoader(GLTFLoader , props.soleLink);
+  
+  // console.log(sole);
+  // console.log(sole.materials[2])
+  // sole.materials[2].color.set('#aaaaaa');
   console.log(props);
   // if(props.isStartOver === true){
 
@@ -16,7 +20,7 @@ const Viewer = (props) =>{
 //     props.ConClick(meshNames[0]);
      
 // }
-useEffect(() => {
+useEffect(() => { 
     const objectName = props.component; 
     const object = gltf.scene.getObjectByName(objectName);
   
@@ -71,7 +75,7 @@ const handleClick = (event) => {
   };
   return (
     
-    <mesh onClick={handleClick} position={[0, -0.5 , 0]} rotation={[-0.3, 0, 0]} >
+    <mesh onClick={handleClick} position={[0, -0.5 , 0]} rotation={[-0.0, 0, 0]} >
       <group group ref={shoeComponents} >
       <Suspense>
         <primitive object={gltf.scene} />

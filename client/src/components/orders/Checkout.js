@@ -4,6 +4,7 @@ import axios from 'axios';
 import {load} from '@cashfreepayments/cashfree-js';
 import FormContext from '../context/FormContext';
 import ProductContext from '../context/ProductContext';
+import CustomerContext from '../context/CustomerContext';
 import './css/checkout.css';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
@@ -18,12 +19,13 @@ const Checkout = () => {
     const navigate = useNavigate();
    const { formData } = useContext(FormContext);
    const { product} = useContext(ProductContext);
-
+   const {customer} = useContext(CustomerContext);
+ console.log(product);
     const details = {
   "draft_order": {
     "line_items": [
       {
-        "variant_id": 45492459176252,
+        "variant_id": product.variants[0].id,
         "quantity": 1
       }
     ],
@@ -37,7 +39,7 @@ const Checkout = () => {
        "zip": formData.zip, 
        "phone": formData.phone
        },
-    "customer":{"id":7073368015164}
+    "customer":{"id":customer.id}
   }
 }
  async function handleCashfree(){
@@ -45,7 +47,7 @@ const Checkout = () => {
 const header = {
       'Content-Type' : 'application/json'
 };
-   axios.post('/get_payload_for_paymnetOrder' , details , {header}).then((response)=>{
+   axios.post('api/get_payload_for_paymnetOrder' , details , {header}).then((response)=>{
        
     const payload = response.data;
     console.log(payload);
