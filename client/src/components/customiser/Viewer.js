@@ -41,7 +41,7 @@ useEffect(() => {
     clickedMaterial.normalMap = props.normalMap;
     clickedMaterial.heightMap = props.heightMap;
     clickedMaterial.roughnessMap = props.roughnessMap;
-    // clickedMaterial.aoMap = props.aoMap;
+    clickedMaterial.aoMap = props.aoMap;
 
     clickedMaterial.roughness = 1;
     clickedMaterial.metalness = 0;
@@ -60,7 +60,7 @@ useEffect(() => {
 
 }
 
-  },[props.component, props.update, props.normalMap, props.heightMap, props.roughnessMap, props.color, gltf.scene ,props.colorMap]);
+  },[props.component, props.update, props.normalMap, props.heightMap, props.roughnessMap, props.color, gltf.scene ,props.colorMap , props.aoMap]);
 
 
 const shoeComponents = useRef(null);

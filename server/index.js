@@ -195,7 +195,7 @@ app.post('/api/get_Payment_Order_Session_ID' , async (req,res)=>{
 app.post('/api/get_payload_for_paymnetOrder', async (req, res) => {
   try {
     const details = await req.body;
-
+console.log(details);
     const headers = {
       'Content-Type': 'application/json',
       'X-Shopify-Access-Token': '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'

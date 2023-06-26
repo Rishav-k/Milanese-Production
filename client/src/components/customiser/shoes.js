@@ -3,8 +3,8 @@ const shoes = {
         name : "Leather Boot",
         price : 80000,
         id : "8421805523260",
-        link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Boot/scene+(21).glb",
-        sole : [{id : "ML-22_S-1"},{id : "ML-22_S-2"}],
+        link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Boot/scene+(23).glb",
+        sole : [{id : "ML-22_S-1"},{id : "ML-22_S-2"}, {id : "ML-22_S-3"},{id : "ML-22_S-4"}],
         components:[{
             name : "Toe" ,
             meshName : "OBJ+MTL_shoes018",
@@ -1181,9 +1181,11 @@ const shoes = {
         name :  "Leather Shoes",
         price : 13499,
         id : "8385974993212",
-        link : 'https://milaneseleather3d.s3.ap-south-1.amazonaws.com/MonkStrap/scene+(17).glb',
+        link : 'https://milaneseleather3d.s3.ap-south-1.amazonaws.com/MonkStrap/scene+(30).glb',
         sole : [{ id : "ML-9_S-1"},
-                { id : "ML-9_S-2"}],
+                { id : "ML-9_S-2"},
+                { id : "ML-9_S-3"},
+                { id : "ML-9_S-4"},],
         components : [{
             name : "Toe" ,
             meshName : "Part_1",
@@ -1654,7 +1656,7 @@ const shoes = {
                 
             },{
                 name : "Quarter",
-                meshName : "part_4_042",
+                meshName : "part_4_005",
                 textures : [{
                 id : "M-1",
                 color : [{name : "blue" ,code : "#4F709C"},
@@ -2126,9 +2128,9 @@ const shoes = {
         name :  "Lopez",
         price : 13499,
         id : "8369670914364",
-        link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/ML-3_OS-1+(1).glb",
-        sole : [{id : "ML_S-1"},
-                {id : "ML_S-2"}],
+        link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/ML-3/scene+(37).glb",
+        sole : [{id : "ML-3_S-1"},
+                {id : "ML-3_S-2"}],
         components : [{
             name : "Vamp",
             meshName : "shoe_body_1",

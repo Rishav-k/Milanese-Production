@@ -83,7 +83,7 @@ if(callProduct){
   useEffect(() => {
     callDashboardPage();
     getShoesDetails(params.id);
-  });
+});
 
   return (
     <div>

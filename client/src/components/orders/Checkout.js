@@ -25,36 +25,37 @@ const Checkout = () => {
   "draft_order": {
     "line_items": [
       {
-        "variant_id": product.variants[0].id,
+        "variant_id": String(product.variants[0].id),
         "quantity": 1
       }
     ],
     "shipping_address": {
-       "first_name":formData.name,
+       "first_name":String(formData.name),
        "last_name": "",
-       "address1": formData.address, 
-       "city": formData.city, 
+       "address1": String(formData.address), 
+       "city": String(formData.city), 
        "province": "ON", 
-       "country": formData.country, 
-       "zip": formData.zip, 
-       "phone": formData.phone
+       "country": String(formData.country), 
+       "zip": String(formData.zip), 
+       "phone": String(formData.phone)
        },
-    "customer":{"id":customer.id}
+    "customer":{"id":String(customer.id)}
   }
 }
  async function handleCashfree(){
-   console.log(details);
+  //  console.log(details);
 const header = {
       'Content-Type' : 'application/json'
 };
-   axios.post('api/get_payload_for_paymnetOrder' , details , {header}).then((response)=>{
+   axios.post('/api/get_payload_for_paymnetOrder' , details , {header}).then((response)=>{
        
     const payload = response.data;
     console.log(payload);
     const headers = {
       'Content-Type' : 'application/json'
       };
-   axios.post('/get_Payment_Order_Session_ID', payload, { headers })
+      console.log(payload);
+   axios.post('/api/get_Payment_Order_Session_ID', payload, { headers })
   .then(response => {
     console.log('Response : ', response.data.payment_session_id);
    

@@ -9,6 +9,7 @@ import './css/customise.css';
 import { Link } from 'react-router-dom';
 // import { useParams } from "react-router-dom";
 
+import {BiDownload }from  "react-icons/bi";
 import {BsCurrencyRupee }from  "react-icons/bs";
 import {FaCheck }from  "react-icons/fa";
 import {GiHamburgerMenu }from  "react-icons/gi";
@@ -93,6 +94,7 @@ const [soleId , setSoleId] = useState(shoe.sole[0].id);
 function handleTexture(id){
   //  console.log(texture);
    var txture  = textures[id];
+   console.log(txture);
    setCol(shoe.components[i].textures[texture[i]].color[0].code);
    var textureLoader = new TextureLoader();
    const c = textureLoader.load(txture.colorMap);
@@ -101,20 +103,23 @@ function handleTexture(id){
    const r = textureLoader.load(txture.roughnessMap);
    const a = textureLoader.load(txture.aoMap);
 
-                   c.repeat.set(3   , 3   );
-                   h.repeat.set(3   , 3   );
-                   n.repeat.set(3   , 3   );
-                   r.repeat.set(3   , 3   );
+                   c.repeat.set(2  , 2  );
+                   h.repeat.set(2  , 2  );
+                   n.repeat.set(2  , 2  );
+                   r.repeat.set(2  , 2  );
+                   a.repeat.set(2  , 2  )
 
                    c.wrapS = c.wrapT = THREE.RepeatWrapping;
                    n.wrapS = n.wrapT = THREE.RepeatWrapping;
                    h.wrapS = h.wrapT = THREE.RepeatWrapping;
                    r.wrapS = r.wrapT = THREE.RepeatWrapping;
+                   a.wrapS = a.wrapT = THREE.RepeatWrapping;
 
                    c.magFilter = c.minFilter = THREE.NearestFilter;
                    n.magFilter = n.minFilter = THREE.NearestFilter;
                    h.magFilter = h.minFilter = THREE.NearestFilter;
                    r.magFilter = r.minFilter = THREE.NearestFilter;
+                   a.magFilter = a.minFilter = THREE.NearestFilter;
    setColorMap(c);
    setHeightMap(h);
    setNormalMap(n);
@@ -177,7 +182,7 @@ var divStyle = {
 
 
     <div className="customise">
-    <div className = "brand-active"><center><img src = "assets/icons/brand-logo.svg" alt = "Milanese"/></center>
+    <div className = "brand-active"><center><img src = "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Logo/brand-logo.svg" alt = "Milanese"/></center>
     <div className = "edit-function"> 
       <div className = "edit-function-name " onClick={()=>{
         setIsStartOver(!isStartOver);
@@ -185,18 +190,22 @@ var divStyle = {
       <div className = "edit-function-name ">Randomise <span><BsShuffle/></span></div>
     </div>
     </div>
-
-
-        <Canvas shadows camera={{ position: [ 8 ,10 ,0], fov: 20 }} scale = {[1,1,1]} style={{ background: "#FFFFFF" }}>
+      <button onClick={() => {
+  const link = document.createElement('a')
+  link.setAttribute('download', 'Your_Custom_Shoes.jpg')
+  link.setAttribute('href', document.querySelector('canvas').toDataURL('image/jpg').replace('image/jpg', 'image/octet-stream'))
+  link.click()
+}} ><BiDownload/></button>
+        <Canvas shadows camera={{ position: [ 8 ,10 ,0], fov: 20 }} style={{ background: "#FFFFFF" }} gl={{ preserveDrawingBuffer: true }} scale = {[1,1,1]} >
           {/* <axesHelper args={[5]} /> */}
           {/* <Environment files="./assets/env.exr" background blur={0.5} /> */}
-          <directionalLight  intensity={0.2} position={[0, 10, 10]} castShadow shadow-mapSize-height={1024}
+          <directionalLight  intensity={0.1} position={[0, 10, 10]} castShadow shadow-mapSize-height={1024}
   shadow-mapSize-width={1024}/>
-          <directionalLight  intensity={1} position={[0, -10, 10]} />
-          <ambientLight intensity={0.5} />
+          <directionalLight  intensity={0.5} position={[0, -0.5, 0]} />
+          {/* <ambientLight intensity={0.5} /> */}
           <spotLight intensity={1} angle={0.5} penumbra={0} position={[0 , 1000, 0]} castShadow />
           <hemisphereLight intensity={0.8} color="white" groundColor="black" />
-           <Viewer shoe = {shoe.link} blink ={blink} component={component}  update = {flag} ConClick = {getComponent} color = {col} colorMap = {colorMap}    heightMap = {heightMap} normalMap ={normalMap} roughnessMap = {roughnessMap} aoMap = {aoMap} isStartOver={isStartOver} soleLink = {soleLink}/>
+           <Viewer shoe = {shoe.link} blink ={blink} component={component}  update = {flag} ConClick = {getComponent} color = {col} colorMap = {colorMap}    heightMap = {heightMap} normalMap = {normalMap} roughnessMap = {roughnessMap} aoMap = {aoMap} isStartOver={isStartOver} soleLink = {soleLink} />
           
            <ContactShadows position={[0, -0.9, -0.05]} opacity={1} scale={20} blur={1} far={1} />
           <OrbitControls minPolarAngle={Math.PI/12} maxPolarAngle={Math.PI*9/13} enableZoom={true} enablePan={false} />
