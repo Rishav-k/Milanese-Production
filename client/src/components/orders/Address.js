@@ -5,14 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import './css/address.css';
 
 import FormContext from '../context/FormContext';
-import CustomerContext from '../context/ProductContext';
+// import CustomerContext from '../context/ProductContext';
 
 
 const Address = () => {
   const navigate = useNavigate();
 const { formData, updateFormData } = useContext(FormContext);
-const {customer} = useContext(CustomerContext);
-console.log(customer);
+// const {customer} = useContext(CustomerContext);
+// console.log(customer);
 // useEffect(()=>{
 //   const fullName = customer.firstName + " " + customer.lastName;
 //    updateFormData("name" , fullName)

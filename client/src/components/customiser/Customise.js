@@ -26,7 +26,7 @@ import {sole} from './sole.js';
 
 //-----------------------------------------Contexts ------------------------------------------------------//
 import ProductContext from '../context/ProductContext';
-
+import ImageContext from '../context/ImageContext.js';
 // var txt = textures.perforated;
 // var shoe = shoes[8385974993212] ;
 // console.log(shoe);
@@ -39,7 +39,7 @@ for(var k = 0 ; k <10 ; k++){
    color[k] = 0;
 }
 
-console.log("HELLO");
+// console.log("HELLO");
 var component;
 function initials(shoe){
   component = shoe.components[0].meshName;
@@ -48,12 +48,13 @@ function initials(shoe){
 
 function Customise({shoe}) {
   const {  product } = useContext(ProductContext);
+  const {updateImageUrl} = useContext(ImageContext);
   //  const params = useParams();
      useEffect(()=>{
       initials(shoe);
      })
-     console.log(texture);
-     console.log(color);
+    //  console.log(texture);
+    //  console.log(color);
   
 
      const [flag , setFlag] = useState(false);
@@ -94,7 +95,7 @@ const [soleId , setSoleId] = useState(shoe.sole[0].id);
 function handleTexture(id){
   //  console.log(texture);
    var txture  = textures[id];
-   console.log(txture);
+  //  console.log(txture);
    setCol(shoe.components[i].textures[texture[i]].color[0].code);
    var textureLoader = new TextureLoader();
    const c = textureLoader.load(txture.colorMap);
@@ -103,11 +104,11 @@ function handleTexture(id){
    const r = textureLoader.load(txture.roughnessMap);
    const a = textureLoader.load(txture.aoMap);
 
-                   c.repeat.set(2  , 2  );
-                   h.repeat.set(2  , 2  );
-                   n.repeat.set(2  , 2  );
-                   r.repeat.set(2  , 2  );
-                   a.repeat.set(2  , 2  )
+                   c.repeat.set(5  , 5  );
+                   h.repeat.set(5  , 5  );
+                   n.repeat.set(5  , 5  );
+                   r.repeat.set(5  , 5  );
+                   a.repeat.set(5  , 5  )
 
                    c.wrapS = c.wrapT = THREE.RepeatWrapping;
                    n.wrapS = n.wrapT = THREE.RepeatWrapping;
@@ -177,6 +178,18 @@ var divStyle = {
     backgroundColor: {col}
   };
 
+ const [imageUrlC, setImageUrlC] = useState('');
+
+  const handleDisplay = () => {
+    const canvas = document.querySelector('canvas');
+    const imageDataURL = canvas.toDataURL('image/png');
+
+    // Display the image within the component
+    setImageUrlC(imageDataURL);
+    updateImageUrl(imageDataURL);
+    console.log(imageUrlC)
+  };
+
   return (<div className = "app">
       <div className = "customiser-view">
 
@@ -190,18 +203,13 @@ var divStyle = {
       <div className = "edit-function-name ">Randomise <span><BsShuffle/></span></div>
     </div>
     </div>
-      <button onClick={() => {
-  const link = document.createElement('a')
-  link.setAttribute('download', 'Your_Custom_Shoes.jpg')
-  link.setAttribute('href', document.querySelector('canvas').toDataURL('image/jpg').replace('image/jpg', 'image/octet-stream'))
-  link.click()
-}} ><BiDownload/></button>
+      
         <Canvas shadows camera={{ position: [ 8 ,10 ,0], fov: 20 }} style={{ background: "#FFFFFF" }} gl={{ preserveDrawingBuffer: true }} scale = {[1,1,1]} >
           {/* <axesHelper args={[5]} /> */}
           {/* <Environment files="./assets/env.exr" background blur={0.5} /> */}
-          <directionalLight  intensity={0.1} position={[0, 10, 10]} castShadow shadow-mapSize-height={1024}
+          <directionalLight  intensity={0.5} position={[10, 10, 10]} castShadow shadow-mapSize-height={1024}
   shadow-mapSize-width={1024}/>
-          <directionalLight  intensity={0.5} position={[0, -0.5, 0]} />
+          <directionalLight  intensity={1} position={[0, -2, 0]} />
           {/* <ambientLight intensity={0.5} /> */}
           <spotLight intensity={1} angle={0.5} penumbra={0} position={[0 , 1000, 0]} castShadow />
           <hemisphereLight intensity={0.8} color="white" groundColor="black" />
@@ -259,10 +267,20 @@ var divStyle = {
         <div className = "done-div-container done-div-container-2">
            <div className = "left"><div><span className = "price"> <BsCurrencyRupee/> {product.price}</span><span><br/>  Expected delivery in 1 week</span></div>
            </div>
-           <div className = "right"><Link to={`address`}><div className = "done"><span>Done </span></div></Link> </div>
+           <div><button onClick={() => {
+  const canvas = document.querySelector('canvas');
+    canvas.toBlob((blob) => {
+      const link = document.createElement('a');
+      link.setAttribute('download', 'Your_Custom_Shoes.png');
+      link.setAttribute('href', URL.createObjectURL(blob));
+      link.click();
+    }, 'image/png', 1.0);
+
+}} ><BiDownload/></button></div>
+           <div className = "right"><Link to={`product`} onClick={handleDisplay}><div className = "done"><span>Done </span></div></Link> </div>
         </div>
     </div>
-      
+      {/* <div><img src = {imageUrlC} alt = "canvas-img" /></div> */}
       </div>
       {/* <div className = "address" id="address" >
        <Address />

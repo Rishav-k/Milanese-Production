@@ -3,7 +3,7 @@ const shoes = {
         name : "Leather Boot",
         price : 80000,
         id : "8421805523260",
-        link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Boot/scene+(23).glb",
+        link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/MonkStrap/scene+(45).glb",
         sole : [{id : "ML-22_S-1"},{id : "ML-22_S-2"}, {id : "ML-22_S-3"},{id : "ML-22_S-4"}],
         components:[{
             name : "Toe" ,
@@ -707,240 +707,6 @@ const shoes = {
                 ]
             },
             {
-                name : "Left-Arm",
-                meshName : "OBJ+MTL_shoes021",
-                textures : [{
-                id : "M-1",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },{
-                id : "M-2",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },{
-                id : "M-3",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },
-            {
-                id : "M-4",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },
-            {
-                id : "M-5",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },
-            {
-                id : "M-6",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },{
-                id : "M-7",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },{
-                id : "M-8",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },{
-                id : "M-9",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },{
-                id : "M-10",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },{
-                id : "M-11",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },
-            {
-                id : "M-12",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },{
-                id : "M-13",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },{
-                id : "M-14",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },
-            {
-                id : "M-15",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            }, {
-                id : "M-16",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },
-             {
-                id : "M-19",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            }, {
-                id : "M-20",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },
-             {
-                id : "M-23",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            },
-             {
-                id : "M-24",
-                color : [{name : "blue" ,code : "#4F709C"},
-                        {name : "curry" , code : "#865439" } , 
-                        { name : "Rubiuo" , code : '#6D3537'} ,
-                        { name : "Lavendar" , code : "#8E6D77"},
-                        { name : "Tomorrow" , code : "#4E4238"},
-                        { name : "Karakul" , code : "#2F3A37"},
-                        { name : "Sea green" , code : "#2C6853"},
-                        { name : "Sky blue" , code : "#4F4F69"},
-                        { name : "Wood" , code : "#735C4D"}]
-            }
-                ]
-            },
-            {
                 name : "Back",
                 meshName : "OBJ+MTL_shoes015",
                 textures : [{
@@ -1181,7 +947,7 @@ const shoes = {
         name :  "Leather Shoes",
         price : 13499,
         id : "8385974993212",
-        link : 'https://milaneseleather3d.s3.ap-south-1.amazonaws.com/MonkStrap/scene+(30).glb',
+        link : 'https://milaneseleather3d.s3.ap-south-1.amazonaws.com/MonkStrap/scene+(44).glb',
         sole : [{ id : "ML-9_S-1"},
                 { id : "ML-9_S-2"},
                 { id : "ML-9_S-3"},
@@ -2133,7 +1899,7 @@ const shoes = {
                 {id : "ML-3_S-2"}],
         components : [{
             name : "Vamp",
-            meshName : "shoe_body_1",
+            meshName : "shoe_body001",
             textures : [{
                 id : "M-1",
                 color : [{name : "blue" ,code : "#4F709C"},
@@ -2366,7 +2132,7 @@ const shoes = {
                 ]
             },{
                 name : "Apron",
-                meshName : "TOP_SHOE001_Cube009_1",
+                meshName : "TOP_SHOE001_Cube001",
                 textures : [{
                 id : "M-1",
                 color : [{name : "blue" ,code : "#4F709C"},
@@ -2599,7 +2365,7 @@ const shoes = {
                 ]
             },{
                 name : "Saddle",
-                meshName : "Plane001",
+                meshName : "Plane001_01",
                 textures : [{
                 id : "M-1",
                 color : [{name : "blue" ,code : "#4F709C"},

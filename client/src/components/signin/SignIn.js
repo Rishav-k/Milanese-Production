@@ -13,7 +13,7 @@ function SignIn() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/api/get_auth_token', {
+      const response = await axios.post('api/get_auth_token', {
         email,
         password,
       });
@@ -22,7 +22,7 @@ function SignIn() {
       if(authToken){
         navigate(-1);
       }
-      console.log('Auth Token:', authToken);
+      // console.log('Auth Token:', authToken);
       setApiSuccess(true); // Set the state to indicate successful API call
     } catch (error) {
       console.log('Error:', error.message);
@@ -32,9 +32,9 @@ function SignIn() {
 
   useEffect(() => {
     console.log(apiSuccess)
-    if (apiSuccess) {
-      navigate(-1);
-    }
+    // if (apiSuccess) {
+    //   navigate(-1);
+    // }
   }, [apiSuccess, navigate]);
 
   return (

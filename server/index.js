@@ -11,6 +11,9 @@ app.use(cookieParser());
 
 dotenv.config({path : './config.env'});
 
+const admin = process.env.SECRET_ADMIN;
+const storefront = process.env.SECRET_STOREFRONT;
+// console.log(storefront);
 app.get('/',(req,res)=>{
   res.send("Welcome to Server of Milanese Leather ");
 })
@@ -32,7 +35,7 @@ app.post('/api/signup' , async (req,res)=>{
 }
   axios.post('https://estro-schuster-1.myshopify.com/admin/api/2023-04/customers.json', requestData, {
         headers: {
-          'X-Shopify-Access-Token': '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',
+          'X-Shopify-Access-Token': admin,
           'Content-Type': 'application/json',
         },
       })
@@ -76,7 +79,7 @@ const graphqlEndpoint = 'https://estro-schuster-1.myshopify.com/api/2023-04/grap
   };
  const headers = {
     'Content-Type': 'application/json',
-    'X-Shopify-Storefront-Access-Token': '710dd918a3ac6e17efcdb7ba67da4ebf',
+    'X-Shopify-Storefront-Access-Token': storefront,
   };
 
   axios.post(graphqlEndpoint, query, { headers })
@@ -130,7 +133,7 @@ app.post('/api/get_auth_token' , async(req,res)=>{
       {
         headers: {
           'Content-Type': 'application/json',
-          'X-Shopify-Storefront-Access-Token': '710dd918a3ac6e17efcdb7ba67da4ebf',
+          'X-Shopify-Storefront-Access-Token': storefront,
         },
       }
     );
@@ -198,7 +201,7 @@ app.post('/api/get_payload_for_paymnetOrder', async (req, res) => {
 console.log(details);
     const headers = {
       'Content-Type': 'application/json',
-      'X-Shopify-Access-Token': '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'
+      'X-Shopify-Access-Token': admin
     };
 
     const response = await axios.post(
@@ -239,7 +242,7 @@ app.get('/api/get_product_details' , async (req , res)=>{
      const product_id = await req.query.params;
      
      axios.get(`https://estro-schuster-1.myshopify.com/admin/api/2023-01/products/${product_id}.json` , {headers : {
-      'X-Shopify-Access-Token' : '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'
+      'X-Shopify-Access-Token' : admin
      }}).then(async response =>{
       // console.log(response.data);
       const product_data = await response.data.product;

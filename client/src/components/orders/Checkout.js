@@ -18,15 +18,15 @@ const Checkout = () => {
   console.log(params.id);
     const navigate = useNavigate();
    const { formData } = useContext(FormContext);
-   const { product} = useContext(ProductContext);
+   const { product ,size , quantity} = useContext(ProductContext);
    const {customer} = useContext(CustomerContext);
  console.log(product);
     const details = {
   "draft_order": {
     "line_items": [
       {
-        "variant_id": String(product.variants[0].id),
-        "quantity": 1
+        "variant_id": String(size),
+        "quantity": quantity
       }
     ],
     "shipping_address": {
@@ -118,13 +118,15 @@ cashfree.checkout(checkoutOptions).then(function(result){
               <span>{product.title}</span>
               <br/>
               <span>{product.vendor}</span>
+              <br/>
+              <span>Quantity : {quantity}</span>
            </div>
            <div className = "checkout-Bill">
               <h2>Bill Details</h2>
               <div className='checkout-billing'>
-              <div className ="billing-items"><span>MRP amount</span> <span style={{ color: "black" }}>Rs.{product.price}</span></div>
+              <div className ="billing-items"><span>MRP amount</span> <span style={{ color: "black" }}>Rs.{product.price*quantity}</span></div>
               <div className ="billing-items"><span>Shipping Charges</span> <span style={{ color: "black" }}> Rs.50.00 </span></div>
-              <div className ="billing-items"><span>Sub Total</span> <span style={{ color: "black" }}> Rs. {Number(product.price) + 50}.00</span></div>
+              <div className ="billing-items"><span>Sub Total</span> <span style={{ color: "black" }}> Rs. {Number(product.price*quantity) + 50}.00</span></div>
               </div>
            </div>
            <div className = "checkout-proceed-to-pay" onClick={handleCashfree}>

@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+@media only screen and (max-width: 850px) {
+
+    .product-header {
+        /* border:1px solid black; */
+        
+        height: 50px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+
+        color: #111111;
+    }
+
+    .page-count {
+        color: grey;
+        margin-right: 20px;
+    }
+
+   .custom-product-image {
+       /* border: 1px solid black; */
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       overflow: hidden;
+       width: 100%;
+   }
+
+   .custom-product-image img {
+       max-width: 100%;
+       max-height: 100%;
+   }
+ 
+
+   .product-title{
+        color: #111;
+        font-size: 24px;
+        font-family: Playfair Display;
+        font-weight: 800;
+        /* margin: 20px; */
+        padding-top : 20px;
+        padding-bottom: 20px;
+   }
+   .product-small-details{
+    margin:20px;
+   }
+   .product-price{
+    color: #111;
+        font-size: 20px;
+        font-family: Inter;
+        font-weight: 700;
+        padding-bottom: 20px;
+        /* margin: 20px; */
+   }
+ .product-size {
+     /* border: 1px solid black; */
+     display: flex;
+     flex-wrap: wrap;
+     width :100%;
+     /* Add this rule */
+ }
+.size-guide{
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    color: #111;
+        font-size: 16px;
+        font-family: Inter;
+        font-weight: 600;
+}
+ .product-variants {
+     border: 2px solid #00000080;
+     
+     border-radius:1000px;
+     height : 38px;
+     width:38px;
+     background-color: white;
+     margin-right: 20px;
+     margin-top :20px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    
+     flex-shrink: 0;
+     /* width: calc(100% - 20px); */
+     /* Add this rule */
+ }
+.product-quantity{
+    color: #111;
+        font-size: 16px;
+        font-family: Inter;
+        font-weight: 600;
+        margin-top : 20px;
+}
+
+ .quantity-buttons{
+    border : 1px solid black;
+    margin-top:20px ;
+    width : 76px;
+    height : 20px;
+    padding: 8px 12px;
+    border-radius: 84px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+.quantity-buttons span{
+    text-align: center;
+}
+
+.product-variants-active{
+    border : 2px solid black;
+    box-shadow: 0 0 5px grey;
+}
+   .product-buy-now{
+    position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+        background-color: #BB9357;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+    
+        color: #FFFFFF;
+   }
+}

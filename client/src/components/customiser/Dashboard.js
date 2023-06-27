@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, {  useState, useContext } from 'react';
 import Customise from './Customise';
 import { useNavigate } from 'react-router-dom';
 import { shoes } from './shoes.js';
@@ -10,8 +10,8 @@ var callProduct = true;
 
 const Dashboard = () => {
   const params = useParams();
-  const {  updateProduct } = useContext(ProductContext);
-  const {  updateCustomer } = useContext(CustomerContext);
+  const { updateProduct } = useContext(ProductContext);
+  const { updateCustomer } = useContext(CustomerContext);
   const [fetchComplete, setFetchComplete] = useState(false);
   const [gotShoe, setGotShoe] = useState(false);
   // const [gotProduct, setGotProduct] = useState(false);
@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   const getProductDetails = async (id) => {
     callProduct = false;
-    console.log(id);
+    // console.log(id);
     // setGotProduct(true);
    fetch(`/api/get_product_details?params=${id}`)
   .then(response => {
@@ -39,14 +39,14 @@ const Dashboard = () => {
   };
 
   const getShoesDetails = async (id) => {
-    console.log(id);
+    // console.log(id);
     try {
       setShoe(shoes[id]);
       if (shoe) {
         setGotShoe(true);
       }
     } catch (error) {
-      console.log(shoe);
+      // console.log(shoe);
       // alert('Invalid Product ID');
     }
   };
@@ -67,13 +67,12 @@ const Dashboard = () => {
     }
 
     const data = await response.json();
-    console.log(data);
-    updateCustomer(data);
     // Update the necessary state or perform any other actions with the data
     setFetchComplete(true);
+    updateCustomer(data);
   } catch (error) {
     console.log('Error received:', error);
-    // navigate('/signin');
+    navigate('/signin');
   }
 };
 if(callProduct){

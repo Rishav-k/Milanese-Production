@@ -7,6 +7,7 @@ import Address from './components/orders/Address.js';
 import Checkout from './components/orders/Checkout.js';
 import Dashboard from './components/customiser/Dashboard.js';
 import Test from './components/orders/Test.js';
+import Product from './components/orders/Product.js';
 
 import FormContext from './components/context/FormContext.js';
 import useForm from './components/context/useForm.js';
@@ -17,19 +18,35 @@ import useProduct from './components/context/useProduct.js';
 import CustomerContext from './components/context/CustomerContext.js';
 import useCustomer from './components/context/useCustomer.js';
 
+import ImageContext from './components/context/ImageContext.js';
+import useImage from './components/context/useImage.js';
 
 function App() {
 
   const { formData, updateFormData } = useForm();
-  const { product, updateProduct } = useProduct();
+  const {
+    size,
+    product,
+    quantity,
+    updateSize,
+    updateQuantity,
+    updateProduct,
+  } = useProduct();
   const {customer , updateCustomer} = useCustomer();
-
+  const {imageUrl ,updateImageUrl} =useImage();
   return (
     <div className="App">
     <CustomerContext.Provider value = {{customer , updateCustomer}}>
     <FormContext.Provider value={{ formData, updateFormData }}>
-    <ProductContext.Provider value={{ product, updateProduct }}>
-    
+    <ProductContext.Provider value={{
+    size,
+    product,
+    quantity,
+    updateSize,
+    updateQuantity,
+    updateProduct,
+  }}>
+     <ImageContext.Provider value={{imageUrl , updateImageUrl}}>
     <BrowserRouter>
      <Routes>
 
@@ -37,8 +54,11 @@ function App() {
      <Route path="signin" element = {<SignIn/>} />
      <Route path = "signup" element ={<SignUp />} />
       <Route path="/products/">
-           <Route path=":id/address/checkout" element={<Checkout />} />
-           <Route path=":id/address" element = {<Address />} />
+      
+           
+           <Route path=":id/product/address/checkout" element={<Checkout />} />
+           <Route path=":id/product/address" element = {<Address />} />
+           <Route path = ":id/product" element ={<Product />} />
            <Route index path=":id" element={<Dashboard />} />
       </Route>
       
@@ -48,7 +68,7 @@ function App() {
      <Route path="/products/:id/checkout" element={<Checkout />}></Route> */}
      </Routes>
      </BrowserRouter>
-
+      </ImageContext.Provider>
      </ProductContext.Provider>
      </FormContext.Provider>
           </CustomerContext.Provider>

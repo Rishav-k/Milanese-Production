@@ -53,7 +53,7 @@ useEffect(() => {
  if (object && props.update === false) {
       const clickedMaterial = object.material.clone();
   // Modify the cloned material as needed
-      object.material.color.set('#aaaaaa');
+      object.material.color.set('#88ffff');
   setTimeout(() => {
     object.material = clickedMaterial;
   }, 600);
@@ -75,7 +75,7 @@ const handleClick = (event) => {
   };
   return (
     
-    <mesh onClick={handleClick} position={[0, -0.5 , 0]} rotation={[-0.0, 0, 0]} >
+    <mesh onClick={handleClick} position={[0, -0.5 , 0]} rotation={[-0.2, 0, 0]} >
       <group group ref={shoeComponents} >
       <Suspense>
         <primitive object={gltf.scene} />
