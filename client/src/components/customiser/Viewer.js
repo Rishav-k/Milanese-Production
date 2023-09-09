@@ -6,6 +6,11 @@ import './css/customise.css';
 const Viewer = (props) =>{ 
   console.log(props.isStartOver) ;
   const gltf = useLoader(GLTFLoader, props.shoe);
+  const sole = useLoader(GLTFLoader , props.soleLink);
+  
+  // console.log(sole);
+  // console.log(sole.materials[2])
+  // sole.materials[2].color.set('#aaaaaa');
   console.log(props);
   // if(props.isStartOver === true){
 
@@ -15,11 +20,16 @@ const Viewer = (props) =>{
 //     props.ConClick(meshNames[0]);
      
 // }
-useEffect(() => {
+useEffect(() => { 
     const objectName = props.component; 
     const object = gltf.scene.getObjectByName(objectName);
-  
-    if (object && props.update === true) {
+  if (object && props.update === true && props.updateTexture === false) {
+      const clickedMaterial  = object.material;
+      clickedMaterial.color.set(props.color); 
+      console.log(clickedMaterial);
+  }
+
+    if (object && props.update === true && props.updateTexture === true) {
       //       const new_material=new THREE.MeshStandardMaterial({
 //     map : props.colorMap,
 //     normalMap : props.normalMap,
@@ -29,16 +39,17 @@ useEffect(() => {
 // object.material=new_material;
 // }
     const clickedMaterial  = object.material;
-    console.log(clickedMaterial);
-                
+    console.log(clickedMaterial);   
 
+  console.log(props.colorMap.source.data);
+ 
     clickedMaterial.map = props.colorMap;
     clickedMaterial.normalMap = props.normalMap;
     clickedMaterial.heightMap = props.heightMap;
     clickedMaterial.roughnessMap = props.roughnessMap;
-    // clickedMaterial.aoMap = props.aoMap;
+    clickedMaterial.aoMap = props.aoMap;
 
-    clickedMaterial.roughness = 1;
+    clickedMaterial.roughness = 0.6;
     clickedMaterial.metalness = 0;
     clickedMaterial.needsUpdate = true;
     
@@ -48,31 +59,36 @@ useEffect(() => {
  if (object && props.update === false) {
       const clickedMaterial = object.material.clone();
   // Modify the cloned material as needed
-      object.material.color.set('#aaaaaa');
+      object.material.color.set('#88ffff');
   setTimeout(() => {
     object.material = clickedMaterial;
   }, 600);
 
 }
 
-  },[props.component, props.update, props.normalMap, props.heightMap, props.roughnessMap, props.color, gltf.scene ,props.colorMap]);
+  },[props.component, props.update, props.normalMap, props.heightMap, props.roughnessMap, props.color, gltf.scene ,props.colorMap , props.aoMap , props.updateTexture]);
 
 
 const shoeComponents = useRef(null);
 const handleClick = (event) => {
     const clickedComponent = event.object;
-    console.log(clickedComponent.name);
+    // clickedComponent.visible = !clickedComponent.visible;  
+    console.log(clickedComponent);
     const clickedName = clickedComponent.name;
+
     props.ConClick(clickedName);
     event.stopPropagation();
   };
   return (
-    <mesh onClick={handleClick}  >
+    
+    <mesh onClick={handleClick} position={[0, -0.5 , 0]} rotation={[-0.2, 0, 0]} >
       <group group ref={shoeComponents} >
       <Suspense>
         <primitive object={gltf.scene} />
+        <primitive object={sole.scene} />
        </Suspense>
       </group>
     </mesh>
+    
 )}
 export default Viewer;  

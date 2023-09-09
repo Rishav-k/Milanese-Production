@@ -1,12 +1,19 @@
-import React, {useContext } from 'react';
+import React, {useContext , useState} from 'react';
 import {ImArrowLeft2}from  "react-icons/im";
 import axios from 'axios';
 import {load} from '@cashfreepayments/cashfree-js';
 import FormContext from '../context/FormContext';
 import ProductContext from '../context/ProductContext';
+import CustomerContext from '../context/CustomerContext';
+import CustomContext from '../context/CustomContext';
 import './css/checkout.css';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
+
+
+// import {AiOutlineEyeInvisible} from "react-icons/ai";
+// import {AiOutlineEye} from "react-icons/ai";
+
 
 const cashfree = await load({
   mode : "sandbox"
@@ -15,43 +22,52 @@ const cashfree = await load({
 const Checkout = () => {
   const params = useParams();
   console.log(params.id);
+   const [isLoading, setIsLoading] = useState(false); 
     const navigate = useNavigate();
    const { formData } = useContext(FormContext);
-   const { product} = useContext(ProductContext);
-
+   const { product ,size , quantity} = useContext(ProductContext);
+   const {customer} = useContext(CustomerContext);
+   const {customData} = useContext(CustomContext);
+ console.log(product);
+ 
     const details = {
   "draft_order": {
+    "note" : JSON.stringify(customData),
     "line_items": [
       {
-        "variant_id": 45325892813116,
-        "quantity": 1
+        "variant_id": String(size),
+        "quantity": quantity
       }
     ],
     "shipping_address": {
-       "first_name":formData.name,
+       "first_name":String(formData.name),
        "last_name": "",
-       "address1": formData.address, 
-       "city": formData.city, 
+       "address1": String(formData.address), 
+       "city": String(formData.city), 
        "province": "ON", 
-       "country": formData.country, 
-       "zip": formData.zip, 
-       "phone": formData.phone
+       "country": String(formData.country), 
+       "zip": String(formData.zip), 
+       "phone": String(formData.phone)
        },
-    "customer":{"id":7073368015164}
+    "customer":{"id":String(customer.id)}
   }
 }
  async function handleCashfree(){
-   console.log(details);
+  setIsLoading(true);
+
+  //  console.log(details);
 const header = {
       'Content-Type' : 'application/json'
 };
-   axios.post('/get_payload_for_paymnetOrder' , details , {header}).then((response)=>{
+   axios.post('/api/get_payload_for_paymnetOrder' , details , {header}).then((response)=>{
        
     const payload = response.data;
+    console.log(payload);
     const headers = {
       'Content-Type' : 'application/json'
       };
-   axios.post('/get_Payment_Order_Session_ID', payload, { headers })
+      console.log(payload);
+   axios.post('/api/get_Payment_Order_Session_ID', payload, { headers })
   .then(response => {
     console.log('Response : ', response.data.payment_session_id);
    
@@ -114,18 +130,21 @@ cashfree.checkout(checkoutOptions).then(function(result){
               <span>{product.title}</span>
               <br/>
               <span>{product.vendor}</span>
+              <br/>
+              <span>Quantity : {quantity}</span>
            </div>
            <div className = "checkout-Bill">
               <h2>Bill Details</h2>
               <div className='checkout-billing'>
-              <div className ="billing-items"><span>MRP amount</span> <span style={{ color: "black" }}>Rs.{product.price}</span></div>
-              <div className ="billing-items"><span>Shipping Charges</span> <span style={{ color: "black" }}> Rs.50.00 </span></div>
-              <div className ="billing-items"><span>Sub Total</span> <span style={{ color: "black" }}> Rs. {Number(product.price) + 50}.00</span></div>
+              <div className ="billing-items"><span>MRP amount</span> <span style={{ color: "black" }}>Rs.{product.price*quantity}</span></div>
+              <div className ="billing-items"><span>Shipping Charges</span> <span style={{ color: "green" }}> FREE </span></div>
+              <div className ="billing-items"><span>Sub Total</span> <span style={{ color: "black" }}> Rs. {Number(product.price*quantity)}.00</span></div>
               </div>
            </div>
-           <div className = "checkout-proceed-to-pay" onClick={handleCashfree}>
+           {isLoading?(<div className='product-buy-now'><img className='loader-svg' src="https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Logo/Rolling-1.1s-50px+(1).svg" alt="img"/></div>):( <div className = "checkout-proceed-to-pay" onClick={handleCashfree}>
              Proceed To Pay
-           </div>
+           </div>)}
+          
            
         </div>
     </div>

@@ -2,47 +2,114 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 const cookieParser = require('cookie-parser');
+const { error } = require('console');
+const dotenv = require('dotenv');
 
 app.use(express.json());
 app.use(cookieParser());
 
+
+dotenv.config({path : './config.env'});
+
+const admin = process.env.SECRET_ADMIN;
+const storefront = process.env.SECRET_STOREFRONT;
+// console.log(storefront);
 app.get('/',(req,res)=>{
   res.send("Welcome to Server of Milanese Leather ");
+});
+
+app.post('/api/signup' , async (req,res)=>{
+  console.log(req.body);
+  // const data = req.body;
+  const requestData = {
+  
+  "customer": {
+    "name" : req.body.name,
+    "email": req.body.email,
+    "verified_email": true,
+    "password": req.body.password,
+    "password_confirmation": req.body.confirmPassword,
+    "send_email_welcome": false
+  }
+
+}
+  axios.post('https://estro-schuster-1.myshopify.com/admin/api/2023-04/customers.json', requestData, {
+        headers: {
+          'X-Shopify-Access-Token': admin,
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((response) => {
+        // Handle the response data
+        // res.send("Registration Successfull")
+        // console.log(response.data);
+        res.send(response.data);
+      })
+      .catch((error) => {
+        // Handle the error
+        console.log(error.status);
+        if(error.status==422){
+          console.log("user Already Registered");
+        }
+        console.log("not Registered")
+        res.send(error);
+        // console.log(error);
+      });
 })
-app.get('/authenticate' , (req,res)=>{
-  console.log("hello world");
-  console.log(req.cookies.rishav);
+
+
+app.get('/api/authenticate' , async (req,res)=>{
+  console.log("authenticate");
+  // console.log(req.cookies.rishav);
 
 const graphqlEndpoint = 'https://estro-schuster-1.myshopify.com/api/2023-04/graphql.json';
-   const query = {
-  query: `query {
-    customer(customerAccessToken: ${req.cookies.rishav}) {
-      id
-      firstName
-      lastName
-      acceptsMarketing
-      email
-      phone
-    }
-  }`,
-};
+   const token = req.cookies.rishav; // Store the access token in the 'token' variable
+  const query = {
+    query: `query($token: String!) { 
+      customer(customerAccessToken: $token) {
+        id
+        firstName
+        lastName
+        acceptsMarketing
+        email
+        phone
+      }
+    }`,
+    variables: { token }, // Pass the token variable to the query variables
+  };
  const headers = {
     'Content-Type': 'application/json',
-    'X-Shopify-Storefront-Access-Token': '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',
+    'X-Shopify-Storefront-Access-Token': storefront,
   };
 
   axios.post(graphqlEndpoint, query, { headers })
-  .then((response) => {
-    console.log(response.data);
+  .then(async (response) => {
+    console.log(response.data.data.customer);
+    if (!response.data.data.customer) {
+        throw new Error('Customer not found'); // Throw an error
+      }
+      const customer = response.data.data.customer;
+      const input = customer.id;
+      const id = input.split('/').pop();
+      console.log(id);
+      const data = {
+        "id" : id,
+        "name" : customer.firstName + " " + customer.lastName,
+        "email" : customer.email
+      }
+       res.send(data);
     // Handle the response data from the Shopify API
   })
   .catch((error) => {
-    console.log('Error:', error);
+    // console.log('Error:', error);
+    console.log("authentication error")
+    res.status(400).json("Unauthorised User")
     // Handle any errors that occurred during the request
   });
+  
 });
 
-app.post('/get_auth_token' , async(req,res)=>{
+app.post('/api/get_auth_token' , async(req,res)=>{
   const {email , password}  = req.body;
   console.log(email ,password);
   try {
@@ -66,7 +133,7 @@ app.post('/get_auth_token' , async(req,res)=>{
       {
         headers: {
           'Content-Type': 'application/json',
-          'X-Shopify-Storefront-Access-Token': '710dd918a3ac6e17efcdb7ba67da4ebf',
+          'X-Shopify-Storefront-Access-Token': storefront,
         },
       }
     );
@@ -81,7 +148,7 @@ app.post('/get_auth_token' , async(req,res)=>{
       const { accessToken } = customerAccessTokenCreate.customerAccessToken;
       console.log('Access Token:', accessToken);
       res.cookie('rishav', accessToken, { 
-        maxAge: 900000,
+        maxAge: 9000000,
         httpOnly: true,
         secure: true
       });
@@ -98,7 +165,7 @@ app.post('/get_auth_token' , async(req,res)=>{
 
 
 
-app.post('/get_Payment_Order_Session_ID' , async (req,res)=>{
+app.post('/api/get_Payment_Order_Session_ID' , async (req,res)=>{
   //  console.log(req.body);
   const data = await req.body;
   // console.log(data);
@@ -128,13 +195,13 @@ app.post('/get_Payment_Order_Session_ID' , async (req,res)=>{
   });
 });
 
-app.post('/get_payload_for_paymnetOrder', async (req, res) => {
+app.post('/api/get_payload_for_paymnetOrder', async (req, res) => {
   try {
     const details = await req.body;
-
+console.log(details);
     const headers = {
       'Content-Type': 'application/json',
-      'X-Shopify-Access-Token': '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'
+      'X-Shopify-Access-Token': admin
     };
 
     const response = await axios.post(
@@ -147,7 +214,7 @@ app.post('/get_payload_for_paymnetOrder', async (req, res) => {
     
     const send_Data = {
       "order_id" : String(data.id),
-      "order_amount" : String(data.line_items[0].price),
+      "order_amount" : String(data.total_price),
       "order_currency" : "INR",
       "order_note" : "Additional Info",
       "customer_details" : {
@@ -167,15 +234,15 @@ app.post('/get_payload_for_paymnetOrder', async (req, res) => {
 });
 
 
-app.get('/get_product_details' , async (req , res)=>{
-     console.log(" i am hit ");
+app.get('/api/get_product_details' , async (req , res)=>{
+     console.log(" get_product_details ");
 
-     console.log(req.query.param);
+    //  console.log(req.query.params);
 
-     const product_id = await req.query.param;
+     const product_id = await req.query.params;
      
      axios.get(`https://estro-schuster-1.myshopify.com/admin/api/2023-01/products/${product_id}.json` , {headers : {
-      'X-Shopify-Access-Token' : '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'
+      'X-Shopify-Access-Token' : admin
      }}).then(async response =>{
       // console.log(response.data);
       const product_data = await response.data.product;
@@ -192,11 +259,11 @@ app.get('/get_product_details' , async (req , res)=>{
         price : product_data.variants[0].price, 
         vendor : product_data.vendor ,
         variants : variants};
-      console.log(data_to_send);
+      // console.log(data_to_send);
       res.send(data_to_send);
      })
      .catch(err => {
-      console.log(err);
+      // console.log(err);
       res.send("Error in getting the product details");
       console.log("ERROR IN GETTING PRODUCT DETAILS");
      })
