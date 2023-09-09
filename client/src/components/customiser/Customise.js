@@ -6,10 +6,11 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader';
 import * as THREE from 'three';
 // import Signin from './components/signin/signin.js';
 import './css/customise.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { useParams } from "react-router-dom";
+// import { Environment } from '@react-three/drei'
 
-import {BiDownload }from  "react-icons/bi";
+import {HiOutlineDownload }from  "react-icons/hi";
 import {BsCurrencyRupee }from  "react-icons/bs";
 import {FaCheck }from  "react-icons/fa";
 import {GiHamburgerMenu }from  "react-icons/gi";
@@ -27,6 +28,8 @@ import {sole} from './sole.js';
 //-----------------------------------------Contexts ------------------------------------------------------//
 import ProductContext from '../context/ProductContext';
 import ImageContext from '../context/ImageContext.js';
+import CustomContext from '../context/CustomContext.js';
+import SoleContext from '../context/SoleContext.js';
 // var txt = textures.perforated;
 // var shoe = shoes[8385974993212] ;
 // console.log(shoe);
@@ -47,8 +50,11 @@ function initials(shoe){
 // var component = shoe.components[0].meshName;
 
 function Customise({shoe}) {
+  const navigate = useNavigate();
   const {  product } = useContext(ProductContext);
   const {updateImageUrl} = useContext(ImageContext);
+  const {updateCustomData} = useContext(CustomContext);
+  const {soleNo , updateSoleNo} = useContext(SoleContext);
   //  const params = useParams();
      useEffect(()=>{
       initials(shoe);
@@ -56,15 +62,22 @@ function Customise({shoe}) {
     //  console.log(texture);
     //  console.log(color);
   
+     const [repeat , setRepeat] = useState(1);
+     if(repeat === 1){setRepeat(3)};
 
      const [flag , setFlag] = useState(false);
      const [showDetails , setShowDetails] = useState(false);
      const [i , setI] = useState(0);
      const [j , setJ] = useState(0);
      const [blink , setBlink] = useState(false);
-     const [col ,setCol] = useState(shoe.components[i].textures[texture[i]].color.code)
+     const [col ,setCol] = useState(shoe.components[i].textures[texture[i]].color[0].code);
      
-
+     const [soleId , setSoleId] = useState(shoe.sole[soleNo].id);
+     const [soleLink , setSoleLink] = useState(sole[soleId].link)
+     console.log(i);
+    //  console.log(shoe.components[i].textures[texture[i]].color[0].code);
+    // const [colUpdate ,setColorUpdate] = useState(false);     
+    const [tupdate , setTupdate] = useState(false);
      const [isStartOver , setIsStartOver] = useState(false);
    //  const [component ,setComponent] = useState(shoe.components[0].meshName);
     // const [texture , setTexture] = useState('');
@@ -74,7 +87,6 @@ function Customise({shoe}) {
             setFlag(false);
             setI(k);
             setBlink(true);
-
          }
       }
       // component = name;
@@ -84,31 +96,33 @@ function Customise({shoe}) {
 //Textures File
 
 //Texture States 
+const [k ,setK] = useState(0);
 const [colorMap , setColorMap] = useState(null);  
 const [heightMap , setHeightMap] = useState(null);
 const [normalMap , setNormalMap] = useState(null);
 const [roughnessMap , setRoughnessMap] = useState(null);  
 const [aoMap , setAoMap] = useState(null); 
-const [soleLink , setSoleLink] = useState(sole[shoe.sole[0].id].link)
-const [soleId , setSoleId] = useState(shoe.sole[0].id);
+
 //Handle Texture Change
 function handleTexture(id){
   //  console.log(texture);
    var txture  = textures[id];
   //  console.log(txture);
-   setCol(shoe.components[i].textures[texture[i]].color[0].code);
+  //  setCol(shoe.components[i].textures[texture[i]].color[0].code);
    var textureLoader = new TextureLoader();
    const c = textureLoader.load(txture.colorMap);
    const h = textureLoader.load(txture.heightMap);
    const n = textureLoader.load(txture.normalMap);
    const r = textureLoader.load(txture.roughnessMap);
    const a = textureLoader.load(txture.aoMap);
+   console.log(c);
+   console.log(" hii i am texture ");
 
-                   c.repeat.set(5  , 5  );
-                   h.repeat.set(5  , 5  );
-                   n.repeat.set(5  , 5  );
-                   r.repeat.set(5  , 5  );
-                   a.repeat.set(5  , 5  )
+                   c.repeat.set(repeat , repeat );
+                   h.repeat.set(repeat , repeat );
+                   n.repeat.set(repeat , repeat );
+                   r.repeat.set(repeat , repeat );
+                   a.repeat.set(repeat , repeat )
 
                    c.wrapS = c.wrapT = THREE.RepeatWrapping;
                    n.wrapS = n.wrapT = THREE.RepeatWrapping;
@@ -129,13 +143,10 @@ function handleTexture(id){
 }
 // Camera Positions
 
-
-
-
 //Texture Buttons from shoe.js
 const textureButtons = [];
 shoe.components[i].textures.forEach((item , index)=>{
-   textureButtons.push(<div key = {index} className = "texture-name" name={item.id} onClick={()=>{ setFlag(true); texture[i] = index;
+   textureButtons.push(<div key = {index} className = "texture-name" name={item.id} onClick={()=>{ setFlag(true); color[i]=k ; texture[i] = index; setTupdate(true);
      setJ(j);  handleTexture(item.id);console.log(item.id);}}><div className = {texture[i] === index ? 'texture-image-active' : 'texture-image'} ><img src ={textures[item.id].icon_link} alt = "Loading..." /></div><div className='small-texture-name'>{textures[item.id].name}</div></div>)
              })
 
@@ -144,9 +155,9 @@ function handleColor(id){
 }
 
 //color Button from shoe.js
-const colorButtons = [];
+const colorButtons = []; 
 shoe.components[i].textures[texture[i]].color.forEach((item , index)=>{
-                 colorButtons.push(<div key= {index} className = "color-name"  onClick={()=>{color[i] = index ; console.log(item);handleColor(item.code);}}><div className={color[i]===index ? "small-color-div-active":"small-color-div"} style={{ backgroundColor: item.code }}></div>
+                 colorButtons.push(<div key= {index} className = "color-name"  onClick={()=>{color[i] = index ;setTupdate(false); setFlag(true); setK(color[i]);console.log(item);handleColor(item.code);}}><div className={color[i]===index ? "small-color-div-active":"small-color-div"} style={{ backgroundColor: item.code }}></div>
 <div className="small-color-name">{item.name}</div></div>)
              }) 
 
@@ -167,7 +178,7 @@ shoe.components.forEach((item  , index)=>{
 
 const soleButtons = [];
 shoe.sole.forEach((item , index)=>{
-  soleButtons.push(<div className = "sole-name" onClick = {()=>{ setSoleId(item.id); setSoleLink(sole[item.id].link)}}> <div className = {soleId === item.id ? "sole-image-active" : "sole-image"} > <img src = {sole[item.id].icon} alt = "img" /> </div>   <div className='small-sole-name'> {sole[item.id].name} </div>  </div>)
+  soleButtons.push(<div key = {index}  className = "sole-name" onClick = {()=>{ setSoleId(item.id);updateSoleNo(index); setSoleLink(sole[item.id].link)}}> <div className = {soleId === item.id ? "sole-image-active" : "sole-image"} > <img src = {sole[item.id].icon} alt = "img" /> </div>   <div className='small-sole-name'> {sole[item.id].name} </div>  </div>)
 })
 
 // const viewerElement = [];
@@ -180,21 +191,29 @@ var divStyle = {
 
  const [imageUrlC, setImageUrlC] = useState('');
 
-  const handleDisplay = () => {
-    const canvas = document.querySelector('canvas');
-    const imageDataURL = canvas.toDataURL('image/png');
+ //Send the Custom Data for the given shoes...
 
-    // Display the image within the component
-    setImageUrlC(imageDataURL);
-    updateImageUrl(imageDataURL);
-    console.log(imageUrlC)
-  };
+  const handleDisplay = async () => {
+  const canvas = document.querySelector('canvas');
+  const imageDataURL = canvas.toDataURL('image/png');
+  setImageUrlC(imageDataURL);
+  updateImageUrl(imageDataURL);
+  console.log(imageUrlC);
+   navigate('product')
+  var custom = [];
+  const promises = shoe.components.map(async (component, l) => {
+    custom.push({"part" : component.name , "texture" : component.textures[texture[l]].id , "color" : component.textures[texture[l]].color[color[l]].name });
+  });
+  custom.push({"part" : "Sole" , "id" : soleId})
+  await Promise.all(promises);
+  console.log(custom);
+  updateCustomData(custom);
+};
+
 
   return (<div className = "app">
-      <div className = "customiser-view">
-
-
-    <div className="customise">
+    <div className = "customiser-view">
+    
     <div className = "brand-active"><center><img src = "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Logo/brand-logo.svg" alt = "Milanese"/></center>
     <div className = "edit-function"> 
       <div className = "edit-function-name " onClick={()=>{
@@ -203,20 +222,36 @@ var divStyle = {
       <div className = "edit-function-name ">Randomise <span><BsShuffle/></span></div>
     </div>
     </div>
-      
+      {/* <div className='set-repeat'><span onClick={()=>{if(repeat>1)setRepeat(repeat-1);}}>-</span> {repeat} <span onClick={()=>setRepeat(repeat+1)}>+</span></div> */}
+
+      <div className='shoes-name'>{product.title}</div>
+      <div className="customise">
+      <div className='download-button'><button onClick={() => {
+  const canvas = document.querySelector('canvas');
+    canvas.toBlob((blob) => {
+      const link = document.createElement('a');
+      link.setAttribute('download', 'Your_Custom_Shoes.png');
+      link.setAttribute('href', URL.createObjectURL(blob));
+      link.click();
+    }, 'image/png', 1.0);
+
+}} ><HiOutlineDownload className='download-icon'/></button></div>
+
         <Canvas shadows camera={{ position: [ 8 ,10 ,0], fov: 20 }} style={{ background: "#FFFFFF" }} gl={{ preserveDrawingBuffer: true }} scale = {[1,1,1]} >
+       
+        {/* <Environment preset= "studio" background blur= {0.5} /> */}
           {/* <axesHelper args={[5]} /> */}
           {/* <Environment files="./assets/env.exr" background blur={0.5} /> */}
-          <directionalLight  intensity={0.5} position={[10, 10, 10]} castShadow shadow-mapSize-height={1024}
+          <directionalLight  intensity={0.4} position={[10, 10, 10]} castShadow shadow-mapSize-height={1024}
   shadow-mapSize-width={1024}/>
-          <directionalLight  intensity={1} position={[0, -2, 0]} />
+          <directionalLight  intensity={0.8} position={[0, -2, 0]} />
           {/* <ambientLight intensity={0.5} /> */}
           <spotLight intensity={1} angle={0.5} penumbra={0} position={[0 , 1000, 0]} castShadow />
           <hemisphereLight intensity={0.8} color="white" groundColor="black" />
-           <Viewer shoe = {shoe.link} blink ={blink} component={component}  update = {flag} ConClick = {getComponent} color = {col} colorMap = {colorMap}    heightMap = {heightMap} normalMap = {normalMap} roughnessMap = {roughnessMap} aoMap = {aoMap} isStartOver={isStartOver} soleLink = {soleLink} />
+           <Viewer shoe = {shoe.link} blink ={blink} component={component}  update = {flag} ConClick = {getComponent} color = {col} colorMap = {colorMap}    heightMap = {heightMap} normalMap = {normalMap} roughnessMap = {roughnessMap} aoMap = {aoMap} isStartOver={isStartOver} soleLink = {soleLink} updateTexture={tupdate}/>
+           <OrbitControls minPolarAngle={Math.PI/12} maxPolarAngle={Math.PI*9/13} enableZoom={true} maxZoom = {1} enablePan={false} />
+           <ContactShadows position={[0, -1.5 , -0.05]} opacity={1} scale={20} blur={1} far={1} />
           
-           <ContactShadows position={[0, -0.9, -0.05]} opacity={1} scale={20} blur={1} far={1} />
-          <OrbitControls minPolarAngle={Math.PI/12} maxPolarAngle={Math.PI*9/13} enableZoom={true} enablePan={false} />
        </Canvas>
 
       <div className = "editor" style = {divStyle} >
@@ -237,6 +272,7 @@ var divStyle = {
                 </div>
             </div>
         </div>
+        <div className='selectors'>
 
        <div className = "selector-name">
          <div className = "selector-type"><span className = "selector-type-txt">Leather</span></div>
@@ -252,8 +288,7 @@ var divStyle = {
              </div>
         </div>
       
-        </div>
-        <hr></hr>
+        
         <div className='selector-name'> 
           <div className = "selector-type"><span className = "selector-type-txt">sole</span></div>
           {soleButtons}
@@ -263,21 +298,13 @@ var divStyle = {
             setSoleLink(sole.bootSole.link)
           }}>sole2</button></div> */}
         </div>
-
+      </div>
+      </div>
         <div className = "done-div-container done-div-container-2">
            <div className = "left"><div><span className = "price"> <BsCurrencyRupee/> {product.price}</span><span><br/>  Expected delivery in 1 week</span></div>
            </div>
-           <div><button onClick={() => {
-  const canvas = document.querySelector('canvas');
-    canvas.toBlob((blob) => {
-      const link = document.createElement('a');
-      link.setAttribute('download', 'Your_Custom_Shoes.png');
-      link.setAttribute('href', URL.createObjectURL(blob));
-      link.click();
-    }, 'image/png', 1.0);
-
-}} ><BiDownload/></button></div>
-           <div className = "right"><Link to={`product`} onClick={handleDisplay}><div className = "done"><span>Done </span></div></Link> </div>
+           
+           <div className = "right"><div onClick={handleDisplay}><div className = "done"><span>Done </span></div></div> </div>
         </div>
     </div>
       {/* <div><img src = {imageUrlC} alt = "canvas-img" /></div> */}

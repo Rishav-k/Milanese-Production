@@ -4,7 +4,7 @@ const useProduct = () => {
   const [product, setProduct] = useState("");
   const [size , setSize] = useState();
   const [quantity , setQuantity] = useState(1);
-
+ 
   const updateQuantity = (value)=>{
     setQuantity(value);
   }

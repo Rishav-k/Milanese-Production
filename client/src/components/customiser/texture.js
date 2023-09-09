@@ -91,7 +91,7 @@ const textures = {
         aoMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-24/V2-M-24+AO.png"
    },
     "M-11":{
-        name: "floral",
+        name: "Floral",
         id : "M-11",
         icon_link : "https://img.freepik.com/free-vector/flower-seamless-pattern-background_1217-740.jpg",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/V2-M-11gray.png",
@@ -101,8 +101,9 @@ const textures = {
         aoMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-11/V2-M-11+AO.png"
     },
      "M-1" : {
-        name : "quartz",
+        name : "Quartz",
         id : "M-1",
+        repeat : 2 ,
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-1-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-1/V2-M-1gray.png",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-1/M-1normal-map.png",
@@ -112,7 +113,7 @@ const textures = {
 
     },
     "M-2" : {
-        name : "net",
+        name : "Net",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-2-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-2/V2-M-2gray.png",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-2/V2-M-2normal.png",
@@ -121,7 +122,7 @@ const textures = {
         aoMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-2/V2-M-2+AO.png"
     },
     "M-3" : {
-        name : "stoned",
+        name : "Stoned",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-3-icon.png",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-3/V2-M-3gray.png",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-3/V2-M-3normal.jpg",
@@ -130,7 +131,7 @@ const textures = {
         aoMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-3/V2-M-3+AO.png"
     },
     "M-4" : {
-        name : "hemp",
+        name : "Hemp",
         id : "M-4",
         icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/texture_icons/M-4-icon.png",
          colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-4/V2-M-4gray.png",
@@ -199,9 +200,9 @@ const textures = {
         heightMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-10/V2-M-10+height+map.png",
         aoMap :"https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-10/V2-M-10+AO.png"
     },
-    moorlandGrain : {
-        name : "moorlandGrain",
-        icon_link : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/moorlandGrain/baseColor.jpg",
+    "M-27" : {
+        name : "Moorland Grain",
+        icon_link : "https://www.leatherneo.com/cdn/shop/articles/28.jpg?v=1674110822",
         colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/moorlandGrain/baseColor.jpg",
         heightMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/moorlandGrain/height.jpg",
         normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/moorlandGrain/normal.jpg",
@@ -211,12 +212,13 @@ const textures = {
         // heightMap : "https://firebasestorage.googleapis.com/v0/b/milanese-leather.appspot.com/o/Textures%2FmoorlandGrain%2Fheight.jpg?alt=media&token=c79d397b-6ab6-419c-bce6-4c229973147d",
         // roughnessMap : "https://firebasestorage.googleapis.com/v0/b/milanese-leather.appspot.com/o/Textures%2FmoorlandGrain%2Fnormal.jpg?alt=media&token=21311713-8581-4a60-86ac-597ce81c825b"
     },
-     fabric : {
-        name : "fabric",
-       colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/fabric/baseColor.jpg",
-        heightMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/fabric/height.jpg",
-        normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/fabric/normal.jpg",
-        roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/fabric/roughness.jpg",
+     "M-28" : {
+        name : "Suede",
+        icon_link : "https://images.pond5.com/old-aged-suede-leather-background-footage-088712520_iconl.jpeg",
+       colorMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-28/M_28_color_1k.jpg",
+        heightMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-28/M_28_height_1k.png",
+        normalMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-28/M_28_normal_1k.png",
+        roughnessMap : "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/textures/M-28/M_28_height_1k.png",
 
 // colorMap : "https://firebasestorage.googleapis.com/v0/b/milanese-leather.appspot.com/o/Textures%2Ffabric%2FLeather_008_Base%20Color.jpg?alt=media&token=b1c53365-843f-4655-9f41-bdbc874bf8b5",
         // normalMap : "https://firebasestorage.googleapis.com/v0/b/milanese-leather.appspot.com/o/Textures%2Ffabric%2FLeather_008_Normal.jpg?alt=media&token=1063319b-60df-41a5-97ae-515bc3134855",

@@ -16,7 +16,7 @@ const storefront = process.env.SECRET_STOREFRONT;
 // console.log(storefront);
 app.get('/',(req,res)=>{
   res.send("Welcome to Server of Milanese Leather ");
-})
+});
 
 app.post('/api/signup' , async (req,res)=>{
   console.log(req.body);
@@ -214,7 +214,7 @@ console.log(details);
     
     const send_Data = {
       "order_id" : String(data.id),
-      "order_amount" : String(data.line_items[0].price),
+      "order_amount" : String(data.total_price),
       "order_currency" : "INR",
       "order_note" : "Additional Info",
       "customer_details" : {

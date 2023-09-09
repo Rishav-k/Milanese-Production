@@ -2,7 +2,9 @@
 
 
 @media only screen and (max-width: 850px) {
-
+     .product{
+        overflow-y: auto;
+     }
     .product-header {
         /* border:1px solid black; */
         
@@ -50,7 +52,7 @@
         padding-bottom: 20px;
    }
    .product-small-details{
-    margin:20px;
+    margin: 20px 20px 100px 20px;
    }
    .product-price{
     color: #111;
@@ -68,6 +70,7 @@
      /* Add this rule */
  }
 .size-guide{
+    /* background-color: green; */
     display: flex;
     justify-content: space-between;
     max-width: 100%;
@@ -76,8 +79,56 @@
         font-family: Inter;
         font-weight: 600;
 }
+.size-chart{
+    position : relative;
+    background-color: white;
+    z-index: 2;
+    width:100%;
+}
+.remove-chart{
+    /* position: absolute;
+    top:0px;
+    left:0px; */
+    height: 12px;
+    width: 12px;
+    position: absolute;
+        right: 35px;
+        top: 20px
+
+}
+.chart-container {
+    position: fixed;
+    bottom:0px;
+    width:100%;
+    height: 50%;
+    background-color: #fff;
+    overflow-y: auto;
+    /* padding: 20px; */
+}
+.chart{
+    overflow: hidden;
+    height:300px;
+}
+.chart>img{
+    padding:20px;
+    max-width: 90%;
+        height: auto;
+}
+.guide{
+    overflow: hidden;
+    margin-top: 30px;
+    margin-bottom: 50px;
+   
+    /* height: 500px; */
+}
+.guide>img{
+    padding: 20px;
+    max-width: 90%;
+    height: auto;
+}
+
  .product-variants {
-     border: 2px solid #00000080;
+     border: 1px solid #00000080;
      
      border-radius:1000px;
      height : 38px;
@@ -99,9 +150,14 @@
         font-family: Inter;
         font-weight: 600;
         margin-top : 20px;
+        margin-bottom: 100px;
 }
-
- .quantity-buttons{
+/* .product-details{
+    padding-bottom: 50px;
+} */
+    
+    
+    .quantity-buttons{
     border : 1px solid black;
     margin-top:20px ;
     width : 76px;
@@ -119,6 +175,10 @@
 .product-variants-active{
     border : 2px solid black;
     box-shadow: 0 0 5px grey;
+}
+.loader-svg{
+    width: 35px;
+    background-color: #BB9357;
 }
    .product-buy-now{
     position: fixed;

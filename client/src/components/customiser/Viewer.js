@@ -23,8 +23,13 @@ const Viewer = (props) =>{
 useEffect(() => { 
     const objectName = props.component; 
     const object = gltf.scene.getObjectByName(objectName);
-  
-    if (object && props.update === true) {
+  if (object && props.update === true && props.updateTexture === false) {
+      const clickedMaterial  = object.material;
+      clickedMaterial.color.set(props.color); 
+      console.log(clickedMaterial);
+  }
+
+    if (object && props.update === true && props.updateTexture === true) {
       //       const new_material=new THREE.MeshStandardMaterial({
 //     map : props.colorMap,
 //     normalMap : props.normalMap,
@@ -34,16 +39,17 @@ useEffect(() => {
 // object.material=new_material;
 // }
     const clickedMaterial  = object.material;
-    console.log(clickedMaterial);
-                
+    console.log(clickedMaterial);   
 
+  console.log(props.colorMap.source.data);
+ 
     clickedMaterial.map = props.colorMap;
     clickedMaterial.normalMap = props.normalMap;
     clickedMaterial.heightMap = props.heightMap;
     clickedMaterial.roughnessMap = props.roughnessMap;
     clickedMaterial.aoMap = props.aoMap;
 
-    clickedMaterial.roughness = 1;
+    clickedMaterial.roughness = 0.6;
     clickedMaterial.metalness = 0;
     clickedMaterial.needsUpdate = true;
     
@@ -60,7 +66,7 @@ useEffect(() => {
 
 }
 
-  },[props.component, props.update, props.normalMap, props.heightMap, props.roughnessMap, props.color, gltf.scene ,props.colorMap , props.aoMap]);
+  },[props.component, props.update, props.normalMap, props.heightMap, props.roughnessMap, props.color, gltf.scene ,props.colorMap , props.aoMap , props.updateTexture]);
 
 
 const shoeComponents = useRef(null);

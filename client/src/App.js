@@ -21,9 +21,16 @@ import useCustomer from './components/context/useCustomer.js';
 import ImageContext from './components/context/ImageContext.js';
 import useImage from './components/context/useImage.js';
 
+import CustomContext from './components/context/CustomContext.js';
+import useCustom from './components/context/useCustom.js';
+
+import SoleContext from './components/context/SoleContext.js';
+import useSole from './components/context/useSole.js';
+
 function App() {
 
   const { formData, updateFormData } = useForm();
+  const {soleNo , updateSoleNo } = useSole();
   const {
     size,
     product,
@@ -33,7 +40,9 @@ function App() {
     updateProduct,
   } = useProduct();
   const {customer , updateCustomer} = useCustomer();
-  const {imageUrl ,updateImageUrl} =useImage();
+  const {imageUrl ,updateImageUrl} = useImage();
+  const {customData , updateCustomData} = useCustom();
+
   return (
     <div className="App">
     <CustomerContext.Provider value = {{customer , updateCustomer}}>
@@ -46,7 +55,9 @@ function App() {
     updateQuantity,
     updateProduct,
   }}>
-     <ImageContext.Provider value={{imageUrl , updateImageUrl}}>
+    <CustomContext.Provider value={{customData , updateCustomData}}>
+    <ImageContext.Provider value={{imageUrl , updateImageUrl}}>
+    <SoleContext.Provider value={{soleNo , updateSoleNo}}>
     <BrowserRouter>
      <Routes>
 
@@ -68,7 +79,9 @@ function App() {
      <Route path="/products/:id/checkout" element={<Checkout />}></Route> */}
      </Routes>
      </BrowserRouter>
+     </SoleContext.Provider>  
       </ImageContext.Provider>
+     </CustomContext.Provider>
      </ProductContext.Provider>
      </FormContext.Provider>
           </CustomerContext.Provider>

@@ -1,104 +1,95 @@
-import React, {  useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Customise from './Customise';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { shoes } from './shoes.js';
 import { useParams } from 'react-router-dom';
 import ProductContext from '../context/ProductContext';
-import CustomerContext from '../context/CustomerContext';
-
-var callProduct = true;
+// import CustomerContext from '../context/CustomerContext';
 
 const Dashboard = () => {
   const params = useParams();
   const { updateProduct } = useContext(ProductContext);
-  const { updateCustomer } = useContext(CustomerContext);
+  // const { updateCustomer } = useContext(CustomerContext);
   const [fetchComplete, setFetchComplete] = useState(false);
-  const [gotShoe, setGotShoe] = useState(false);
-  // const [gotProduct, setGotProduct] = useState(false);
   const [shoe, setShoe] = useState();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const getProductDetails = async (id) => {
-    callProduct = false;
-    // console.log(id);
-    // setGotProduct(true);
-   fetch(`/api/get_product_details?params=${id}`)
-  .then(response => {
-     if (!response.ok) {
-      throw new Error('Failed to fetch product details');
-    }
-    return response.json();
-  })
-  .then(product_details => {
-    updateProduct(product_details);
-    // console.log(product);    
-  })
-  .catch(error => {
-    console.log(error);
-  })
+  const getProductDetails = (id) => {
+    fetch(`/api/get_product_details?params=${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch product details');
+        }
+        return response.json();
+      })
+      .then((product_details) => {
+        console.log(product_details);
+        updateProduct(product_details);
+        setFetchComplete(true); // Move the fetch completion flag here
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  const getShoesDetails = async (id) => {
-    // console.log(id);
+  const getShoesDetails = (id) => {
     try {
-      setShoe(shoes[id]);
-      if (shoe) {
-        setGotShoe(true);
+      const selectedShoe = shoes[id];
+      if (selectedShoe) {
+        setShoe(selectedShoe);
+      } else {
+        throw new Error('Invalid Product ID');
       }
     } catch (error) {
-      // console.log(shoe);
-      // alert('Invalid Product ID');
+      console.log(error);
+      // Handle the error accordingly, e.g., show an error message
     }
   };
 
-  const callDashboardPage = async () => {
-  try {
-    const response = await fetch('/api/authenticate', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-    });
+  // const callDashboardPage = async () => {
+  //   try {
+  //     const response = await fetch('/api/authenticate', {
+  //       method: 'GET',
+  //       headers: {
+  //         Accept: 'application/json',
+  //         'Content-Type': 'application/json',
+  //       },
+  //       credentials: 'include',
+  //     });
 
-    if (!response.ok) {
-      throw new Error('Failed to authenticate');
-    }
+  //     if (!response.ok) {
+  //       throw new Error('Failed to authenticate');
+  //     }
 
-    const data = await response.json();
-    // Update the necessary state or perform any other actions with the data
-    setFetchComplete(true);
-    updateCustomer(data);
-  } catch (error) {
-    console.log('Error received:', error);
-    navigate('/signin');
-  }
-};
-if(callProduct){
-   getProductDetails(params.id);
-}
-if(!fetchComplete || !gotShoe){
-   callDashboardPage();
+  //     const data = await response.json();
+  //     updateCustomer(data);
+  //   } catch (error) {
+  //     console.log('Error received:', error);
+      // navigate('/signin');
+  //   }
+  // };
+
+  useEffect(() => {
+    getProductDetails(params.id);
     getShoesDetails(params.id);
-    setFetchComplete(true);
-    setGotShoe(true);
-  }
-    
+    // callDashboardPage();
+     // eslint-disable-next-line
+  }, [params.id] );
 
-  return (
-    <div>
-      {!fetchComplete || !gotShoe ? (
-        <div className="loader-container">
-          <div>
-            <img className="loader-image" src="https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Spin-1.2s-62px.svg" alt="Loading..." />
-          </div>
+  if (!fetchComplete || !shoe) {
+    return (
+      <div className="loader-container">
+        <div>
+          <img
+            className="loader-image"
+            src="https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Spin-1.2s-62px.svg"
+            alt="Loading..."
+          />
         </div>
-      ) : (
-        <Customise shoe={shoe} />
-      )}
-    </div>
-  );
-};
+      </div>
+    );
+  }
 
+  return <Customise shoe={shoe} />;
+};
 export default Dashboard;

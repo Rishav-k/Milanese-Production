@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext ,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {ImArrowLeft2}from  "react-icons/im";
@@ -14,6 +14,20 @@ import ImageContext from '../context/ImageContext';
 import ProductContext from '../context/ProductContext';
 
 const Product = () => {
+  const [isLoading, setIsLoading] = useState(false);  
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 500);
+  // }, []);
+const handleClick = () => {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      navigate('address'); // Assuming you have a navigate function to navigate to the 'address' page
+    }, 500);
+  };
     const navigate = useNavigate();
     const {
         size,
@@ -23,11 +37,17 @@ const Product = () => {
     updateQuantity,
     } = useContext(ProductContext);
     const {imageUrl} = useContext(ImageContext)
-
+  const [isChartVisible , setIsChartVisible] = useState(false);
     const variants = [];
     product.variants.forEach((item, index)=>{
         variants.push(<div  key = {index} onClick={()=>{updateSize(item.id);console.log(size)}} className= {`product-variants ${item.id === size ? 'product-variants-active' : ''}`} ><div>{item.title}</div></div>)
     })
+
+    function handleSizeChart(){
+        setIsChartVisible(!isChartVisible);
+    }
+
+
     // console.log(variants);
     return (
     <div className='product'>
@@ -49,7 +69,7 @@ const Product = () => {
            </div>
            
            <div className='product-size-choose'>
-           <div className='size-guide'><span>Select Size (UK Size)</span> <span>Size Guide <AiOutlineRight/></span></div>
+           <div className='size-guide'><span>Select Size (UK Size)</span> <span onClick={()=>{handleSizeChart();console.log("view-chart")}}>Size Guide <AiOutlineRight/></span></div>
             <div className='product-size'>{variants}</div>
            </div>
 
@@ -59,7 +79,25 @@ const Product = () => {
            </div>
         </div>
        </div>
-       <div className='product-buy-now' onClick={()=>{navigate('address')}}>Buy Now</div>
+        {isLoading ? (
+          
+       <div className='product-buy-now'><img className='loader-svg' src="https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Logo/Rolling-1.1s-50px+(1).svg" alt="img"/></div>
+      ) : (
+        <div className="product-buy-now" onClick={handleClick}>
+          Buy Now
+        </div>
+      )}
+     {isChartVisible && (<div className = "size-chart">
+         
+         <div className='chart-container'>
+        <div className="remove-chart" onClick={()=>{handleSizeChart()}}><b>X</b></div>
+          <div><center><h3>Size Guide</h3></center></div>
+          <div className='chart'><img src="/assets/size-chart/1.png" alt = "size-chart"></img></div>
+          <div className='guide'><img src="/assets/size-chart/2.png" alt = "size-chart"></img></div>
+          
+         </div>
+
+      </div>)} 
     </div>
   )
 }
