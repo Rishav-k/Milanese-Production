@@ -20,7 +20,7 @@ const Address = () => {
       }, 500);
     } else {
       setShowErrors(true);
-      window.alert('Please fill in all.');
+      window.alert('Please fill in all the required fields correctly.');
     }
   };
 
