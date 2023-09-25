@@ -30,6 +30,9 @@ import ProductContext from '../context/ProductContext';
 import ImageContext from '../context/ImageContext.js';
 import CustomContext from '../context/CustomContext.js';
 import SoleContext from '../context/SoleContext.js';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 // var txt = textures.perforated;
 // var shoe = shoes[8385974993212] ;
 // console.log(shoe);
@@ -61,7 +64,8 @@ function Customise({shoe}) {
      })
     //  console.log(texture);
     //  console.log(color);
-  
+    
+     const [ToggleshowSelectorDesktop , setToggleShowSelectorDesktop]=useState(true);
      const [repeat , setRepeat] = useState(1);
      if(repeat === 1){setRepeat(3)};
 
@@ -261,6 +265,31 @@ var divStyle = {
               <div className="right-arrow arrow"><IoIosArrowForward onClick={()=>{setFlag(false) ; i < shoe.components.length-1 ? setI(i+1) : setI(0); setJ(texture[i]); setBlink(true)}} /></div>
          </div>
 
+         <div className = "desktop-components" >
+              <p>Select the shoe part to edit</p> 
+
+              <div className = "component-name"> 
+                <div className='component-name-desktop'>{shoe.components[1].name} {" "}</div> 
+                <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowSelectorDesktop(!ToggleshowSelectorDesktop) ; setFlag(false) ; setI(1); setJ(texture[1]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
+                
+              </div>
+
+              <div className = "component-name">
+                <div className='component-name-desktop'>{shoe.components[2].name} {" "}</div> 
+                <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowSelectorDesktop(!ToggleshowSelectorDesktop) ; setFlag(false) ; setI(2); setJ(texture[2]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
+              </div>
+
+              <div className = "component-name">
+                <div className='component-name-desktop'>{shoe.components[3].name} {" "}</div> 
+                <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowSelectorDesktop(!ToggleshowSelectorDesktop) ; setFlag(false) ; setI(3); setJ(texture[3]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
+              </div>
+
+              <div className = "component-name">
+                <div className='component-name-desktop'>{shoe.components[0].name} {" "}</div> 
+                <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowSelectorDesktop(!ToggleshowSelectorDesktop) ; setFlag(false) ; setI(0); setJ(texture[0]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
+              </div> 
+         </div>
+
          <div className="details">
             <div className = "hamburger-icon"><GiHamburgerMenu onClick={()=>{
               setShowDetails(!showDetails)
@@ -272,20 +301,21 @@ var divStyle = {
                 </div>
             </div>
         </div>
-        <div className='selectors'>
 
-       <div className = "selector-name">
-         <div className = "selector-type"><span className = "selector-type-txt">Leather</span></div>
-         <div className = "textures">
-             {textureButtons}
-         </div>
-       </div>  
+      <div className='selectors'>
+
+        <div className = "selector-name">
+          <div className = "selector-type"><span className = "selector-type-txt">Leather</span></div>
+          <div className = "textures">
+              {textureButtons}
+          </div>
+        </div>  
 
         <div className = "selector-name">
           <div className = "selector-type"><span className = "selector-type-txt">Color</span></div>
-             <div className= "textures">
+          <div className= "textures">
                  {colorButtons}
-             </div>
+          </div>
         </div>
       
         
@@ -299,6 +329,35 @@ var divStyle = {
           }}>sole2</button></div> */}
         </div>
       </div>
+
+      {!ToggleshowSelectorDesktop &&
+      <div className='selectors-desktop'>
+        <div className = "selector-name">
+          <div className = "selector-type"><span className = "selector-type-txt">Leather</span></div>
+          <div className = "textures">
+              {textureButtons}
+          </div>
+        </div>  
+
+        <div className = "selector-name">
+          <div className = "selector-type"><span className = "selector-type-txt">Color</span></div>
+          <div className= "textures">
+                 {colorButtons}
+          </div>
+        </div>
+        
+        <div className='selector-name'> 
+          <div className = "selector-type"><span className = "selector-type-txt">Sole</span></div>
+          <div className='textures'>{soleButtons}</div>
+          {/* <div><button onClick = {()=>{
+            setSoleLink(sole.plainSole.link)
+          }}>sole1</button><button onClick = {()=>{
+            setSoleLink(sole.bootSole.link)
+          }}>sole2</button></div> */}
+        </div>
+      </div>
+      }
+
       </div>
         <div className = "done-div-container done-div-container-2">
            <div className = "left"><div><span className = "price"> <BsCurrencyRupee/> {product.price}</span><span><br/>  Expected delivery in 1 week</span></div>
