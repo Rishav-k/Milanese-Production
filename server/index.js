@@ -173,8 +173,8 @@ app.post('/api/get_Payment_Order_Session_ID' , async (req,res)=>{
   const headers = {
     'Content-Type' : 'application/json',
     'x-api-version' : '2022-09-01',
-    'x-client-id' : 'TEST387739db63524ad39d50dd8e80937783',
-    'x-client-secret' : 'TEST9ed00193e6044bcd66d4f3819fee526ceac25bc0'
+    'x-client-id' : '',
+    'x-client-secret' : ''
   }
   console.log("GEt Session ID ");
   console.log(payload);
