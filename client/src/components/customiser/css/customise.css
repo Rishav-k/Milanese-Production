@@ -95,7 +95,7 @@
         width: 40vw; 
         height: 10vh; 
     }
-
+   
     .component-name:hover{
         color:#BB9357; 
         background-color: #eee6da;
@@ -269,6 +269,10 @@
         margin-right: 4rem;
     }
     
+    .right:hover{ 
+         cursor: pointer;
+    }
+    
     .edit-function{
         display: none;
     }
@@ -296,15 +300,14 @@
         display: none;
     }
 
-    .selectors-desktop{
-        z-index: 1000;
+    .selectors-desktop {
         display: flex;
         flex-direction: column;
-        width: 40vw;
-        overflow-y: hidden;
-        margin-bottom: 5rem;
+        width: 40vw; 
+        margin-bottom: 3rem;
     }
 
+     
     .selector-type {
         margin-bottom: 0rem;
         margin-top: 2rem;
