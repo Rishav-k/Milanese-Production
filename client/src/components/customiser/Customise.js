@@ -255,7 +255,7 @@ var divStyle = {
           {/* <axesHelper args={[5]} /> */}
           {/* <Environment files="./assets/env.exr" background blur={0.5} /> */}
           <directionalLight  intensity={0.4} position={[10, 10, 10]} castShadow shadow-mapSize-height={1024}
-  shadow-mapSize-width={1024}/>
+          shadow-mapSize-width={1024}/>
           <directionalLight  intensity={0.8} position={[0, -2, 0]} />
           {/* <ambientLight intensity={0.5} /> */}
           <spotLight intensity={1} angle={0.5} penumbra={0} position={[0 , 1000, 0]} castShadow />
@@ -274,11 +274,12 @@ var divStyle = {
          </div>
 
          <div className = "desktop-components" >
-              <p>Select the shoe part to edit</p>  
-              <div className = "component-name"> 
+              <p>Select the shoe part to edit</p> 
+
+              <div className = "component-name">  
                 <div className='component-name-desktop'>{shoe.components[1].name} {" "}</div> 
                 <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowVampDesktop(!ToggleshowVampDesktop) ; setFlag(false) ; setI(1); setJ(texture[1]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div>  
-                 
+              
               </div>
               <div>
               <Selectordesktop 
@@ -288,7 +289,7 @@ var divStyle = {
                    textureButtons={textureButtons}
                   />
               </div> 
-               
+
               <div className = "component-name">
                 <div className='component-name-desktop'>{shoe.components[2].name} {" "}</div> 
                 <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowQuarterDesktop(!ToggleshowQuarterDesktop) ; setFlag(false) ; setI(2); setJ(texture[2]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 

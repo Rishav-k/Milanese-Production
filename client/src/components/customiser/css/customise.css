@@ -74,17 +74,22 @@
 
     .brand-active {
         margin-top: 20px;
-        margin-bottom: 10px;
-        margin-right: 35rem; 
+        margin-bottom: 10px; 
+    }
+
+    .brand-active img{ 
+        width: 12vw;
+        margin-right: 40vw; 
     }
 
     .components {
        display: none;
     }
 
-    .desktop-components{
+    .desktop-components {
         display: flex;
         flex-direction: column;
+        margin-top: -3rem;
     }
     
     .component-name{
@@ -115,11 +120,11 @@
           margin-left: 1rem;
     }
 
-    .desktop-components p{
-         font-size: 24px;
-         line-height: 29.05px;
-         margin: 0px auto;
-         margin-bottom: 5rem;
+    .desktop-components p {
+        font-size: 20px;
+        line-height: 29.05px;
+        margin: 0px auto;
+        margin-bottom: 2rem;
     }
 
     .desktop-downArrow-icon {
@@ -143,26 +148,26 @@
     
     .shoes-name {
         position: absolute;
-        top: 95vh;
+        top: 90vh;
         z-index: 100000;
 
         color: #111;
-        font-family: Playfair Display;
-        font-family: Playfair Display;
+        font-family: Playfair Display; 
         font-size: 25px;
         font-weight: 800;
         line-height: 37.32px;
         letter-spacing: 0em;
         text-align: left;  
-        margin-left: 10rem; 
+        margin-left: 10rem;  
     }
     
     .download-button {
-        position: relative;
+        /* position: relative;
         left: 47vw;
         top: 20px;
         z-index: 100;
-        height: 3rem; 
+        height: 3rem;  */
+        display: none;
     }
      
     
