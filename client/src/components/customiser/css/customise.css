@@ -71,10 +71,13 @@
         height :100vh;
         display: block;
     }
+
     .brand-active {
         margin-top: 20px;
         margin-bottom: 10px;
+        margin-right: 35rem; 
     }
+
     .components {
        display: none;
     }
@@ -92,10 +95,10 @@
         font-family: 'Playfair Display';
         line-height: 37.32px;
         font-weight: 700;
-        width: 40vw; 
+        width: 35vw; 
         height: 10vh; 
     }
-
+   
     .component-name:hover{
         color:#BB9357; 
         background-color: #eee6da;
@@ -139,6 +142,10 @@
     }
     
     .shoes-name {
+        position: absolute;
+        top: 95vh;
+        z-index: 100000;
+
         color: #111;
         font-family: Playfair Display;
         font-family: Playfair Display;
@@ -147,8 +154,7 @@
         line-height: 37.32px;
         letter-spacing: 0em;
         text-align: left;  
-        margin-left: 5rem;
-        margin-top: 1rem;
+        margin-left: 10rem; 
     }
     
     .download-button {
@@ -180,7 +186,7 @@
     .textures {
         display: flex; 
         flex-wrap: wrap;
-        width: 40vw;
+        width: 35vw;
         font-family: 'Inter';
         text-align: center;
         font-style: normal;
@@ -241,7 +247,7 @@
         position: fixed;
         top: 88vh;
         right: 0vw;
-        width: 40vw;
+        width: 35vw;
         height: 12vh;
         z-index: 1000;
         background: white;
@@ -266,7 +272,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-right: 4rem;
+        margin-right: 1rem;
+    }
+    
+    .right:hover{ 
+         cursor: pointer;
     }
     
     .edit-function{
@@ -296,15 +306,14 @@
         display: none;
     }
 
-    .selectors-desktop{
-        z-index: 1000;
+    .selectors-desktop {
         display: flex;
         flex-direction: column;
-        width: 40vw;
-        overflow-y: hidden;
-        margin-bottom: 5rem;
+        width: 35vw; 
+        margin-bottom: 3rem;
     }
 
+     
     .selector-type {
         margin-bottom: 0rem;
         margin-top: 2rem;
@@ -337,7 +346,7 @@
         padding-bottom: 100px;
     }
     .shoes-name{
-        color: #111;
+            color: #111;
             font-family: Playfair Display;
             font-size: 16px;
             font-style: normal;
