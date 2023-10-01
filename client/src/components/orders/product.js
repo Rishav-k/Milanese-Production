@@ -69,7 +69,7 @@ const handleClick = () => {
            </div>
            
            <div className='product-size-choose'>
-           <div className='size-guide'><span>Select Size (UK Size)</span> <span onClick={()=>{handleSizeChart();console.log("view-chart")}}>Size Guide <AiOutlineRight/></span></div>
+           <div className='size-guide'><span>Select Size (UK Size)</span> <span className='size-guide-span' onClick={()=>{handleSizeChart();console.log("view-chart")}}>Size Guide <AiOutlineRight/></span></div>
             <div className='product-size'>{variants}</div>
            </div>
 
