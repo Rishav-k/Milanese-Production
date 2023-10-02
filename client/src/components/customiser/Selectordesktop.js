@@ -1,6 +1,6 @@
 
 
-const Selectordesktop =({ToggleshowSelectorDesktop , soleButtons , textureButtons,colorButtons})=>{
+const Selectordesktop =({ToggleshowSelectorDesktop , textureButtons,colorButtons})=>{
     return(<div>
     {ToggleshowSelectorDesktop &&
         <div className='selectors-desktop'>
@@ -16,16 +16,6 @@ const Selectordesktop =({ToggleshowSelectorDesktop , soleButtons , textureButton
             <div className= "textures">
                    {colorButtons}
             </div>
-          </div>
-          
-          <div className='selector-name'> 
-            <div className = "selector-type"><span className = "selector-type-txt">Sole</span></div>
-            <div className='textures'>{soleButtons}</div>
-            {/* <div><button onClick = {()=>{
-              setSoleLink(sole.plainSole.link)
-            }}>sole1</button><button onClick = {()=>{
-              setSoleLink(sole.bootSole.link)
-            }}>sole2</button></div> */}
           </div>
         </div>
         }

@@ -188,7 +188,7 @@
         cursor: pointer;
     } 
 
-    .textures {
+    .textures { 
         display: flex; 
         flex-wrap: wrap;
         width: 35vw;
@@ -199,7 +199,19 @@
         font-size: 10px;
         line-height: 30px; 
     }
-    
+    .textures-sole{
+        margin-top: 2rem; 
+        margin-bottom: 5rem; 
+        display: flex; 
+        flex-wrap: wrap;
+        width: 35vw;
+        font-family: 'Inter';
+        text-align: center;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 30px; 
+    }
     .texture-image img{
         width: 4rem;
         height: 3rem;
@@ -221,6 +233,10 @@
         border-radius: 4px;
     }
     
+    .sole-name{
+        padding: 5px;
+        margin: 10px;
+    }
     .sole-image-active {
         width: 4rem;
         height: 3rem;

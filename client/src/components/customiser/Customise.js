@@ -68,10 +68,11 @@ function Customise({shoe}) {
     //  console.log(color);
     
      
-     const [ToggleshowToeDesktop , setToggleShowToeDesktop]=useState(false);
-     const [ToggleshowBackstripDesktop , setToggleShowBackstripDesktop]=useState(false);
-     const [ToggleshowVampDesktop , setToggleShowVampDesktop]=useState(false);
-     const [ToggleshowQuarterDesktop , setToggleShowQuarterDesktop]=useState(false);
+    //  const [ToggleshowToeDesktop , setToggleShowToeDesktop]=useState(false);
+    //  const [ToggleshowBackstripDesktop , setToggleShowBackstripDesktop]=useState(false);
+     const [ToggleshowSelectorDesktop , setToggleShowSelectorDesktop]=useState(false);
+    //  const [ToggleshowQuarterDesktop , setToggleShowQuarterDesktop]=useState(false);
+     const [ToggleshowSoleDesktop , setToggleShowSoleDesktop]=useState(false);
     
      
      const [repeat , setRepeat] = useState(1);
@@ -185,6 +186,26 @@ shoe.components.forEach((item  , index)=>{
 
 });
 
+const desktopdetailButtons = [];
+shoe.components.forEach((item,index)=>{
+  desktopdetailButtons.push(
+  <div key={index}> 
+  <div className = "component-name"  >  
+  <div className='component-name-desktop'>{item.name} {" "}</div> 
+  <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowSelectorDesktop(!ToggleshowSelectorDesktop) ; setFlag(false) ; setI(i); setJ(texture[i]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div>
+  </div>
+  <div> 
+    <Selectordesktop 
+        ToggleshowSelectorDesktop={ToggleshowSelectorDesktop}
+        colorButtons={colorButtons} 
+        textureButtons={textureButtons}
+    />
+   </div> 
+  </div>
+  )
+  });
+
+
 
 // Sole Buttons 
 
@@ -274,22 +295,24 @@ var divStyle = {
          </div>
 
          <div className = "desktop-components" >
-              <p>Select the shoe part to edit</p> 
-
-              <div className = "component-name">  
+              <p>Select the shoe part to edit</p>  
+              <div>
+                {desktopdetailButtons}
+              </div>
+{/* 
+            <div className = "component-name">
                 <div className='component-name-desktop'>{shoe.components[1].name} {" "}</div> 
-                <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowVampDesktop(!ToggleshowVampDesktop) ; setFlag(false) ; setI(1); setJ(texture[1]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div>  
-              
+                <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowVampDesktop(!ToggleshowVampDesktop) ; setFlag(false) ; setI(1); setJ(texture[1]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
+                
               </div>
               <div>
               <Selectordesktop 
-                   ToggleshowSelectorDesktop={ToggleshowVampDesktop}
-                   colorButtons={colorButtons}
-                   soleButtons={soleButtons}
+                  ToggleshowSelectorDesktop={ToggleshowVampDesktop}
+                   colorButtons={colorButtons} 
                    textureButtons={textureButtons}
                   />
-              </div> 
-
+              </div>
+             
               <div className = "component-name">
                 <div className='component-name-desktop'>{shoe.components[2].name} {" "}</div> 
                 <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowQuarterDesktop(!ToggleshowQuarterDesktop) ; setFlag(false) ; setI(2); setJ(texture[2]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
@@ -298,8 +321,7 @@ var divStyle = {
               <div>
               <Selectordesktop 
                   ToggleshowSelectorDesktop={ToggleshowQuarterDesktop}
-                   colorButtons={colorButtons}
-                   soleButtons={soleButtons}
+                   colorButtons={colorButtons} 
                    textureButtons={textureButtons}
                   />
               </div>
@@ -311,8 +333,7 @@ var divStyle = {
               <div>
               <Selectordesktop 
                    ToggleshowSelectorDesktop={ToggleshowBackstripDesktop}
-                   colorButtons={colorButtons}
-                   soleButtons={soleButtons}
+                   colorButtons={colorButtons} 
                    textureButtons={textureButtons}
                   />
               </div>
@@ -324,11 +345,25 @@ var divStyle = {
               <div>
               <Selectordesktop 
                   ToggleshowSelectorDesktop={ToggleshowToeDesktop}
-                   colorButtons={colorButtons}
-                   soleButtons={soleButtons}
+                   colorButtons={colorButtons} 
                    textureButtons={textureButtons}
                   />
-              </div>
+              </div> */}
+
+            <div className= "component-name"> 
+            <div className = 'component-name-desktop'>Sole</div>
+            <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowSoleDesktop(!ToggleshowSoleDesktop)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
+            </div>
+
+            {ToggleshowSoleDesktop &&
+            <div className='textures-sole'>{soleButtons}</div>
+            }
+            {/* <div><button onClick = {()=>{
+              setSoleLink(sole.plainSole.link)
+            }}>sole1</button><button onClick = {()=>{
+              setSoleLink(sole.bootSole.link)
+            }}>sole2</button></div> */} 
+
          </div>
 
          <div className="details">
