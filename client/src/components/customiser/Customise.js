@@ -68,10 +68,9 @@ function Customise({shoe}) {
     //  console.log(color);
     
      
-    //  const [ToggleshowToeDesktop , setToggleShowToeDesktop]=useState(false);
-    //  const [ToggleshowBackstripDesktop , setToggleShowBackstripDesktop]=useState(false);
-     const [ToggleshowSelectorDesktop , setToggleShowSelectorDesktop]=useState(false);
-    //  const [ToggleshowQuarterDesktop , setToggleShowQuarterDesktop]=useState(false);
+    
+     
+     const [showItem , setShowItem]=useState();
      const [ToggleshowSoleDesktop , setToggleShowSoleDesktop]=useState(false);
     
      
@@ -186,24 +185,29 @@ shoe.components.forEach((item  , index)=>{
 
 });
 
-const desktopdetailButtons = [];
-shoe.components.forEach((item,index)=>{
-  desktopdetailButtons.push(
-  <div key={index}> 
-  <div className = "component-name"  >  
-  <div className='component-name-desktop'>{item.name} {" "}</div> 
-  <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowSelectorDesktop(!ToggleshowSelectorDesktop) ; setFlag(false) ; setI(i); setJ(texture[i]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div>
-  </div>
-  <div> 
-    <Selectordesktop 
-        ToggleshowSelectorDesktop={ToggleshowSelectorDesktop}
-        colorButtons={colorButtons} 
-        textureButtons={textureButtons}
-    />
-   </div> 
-  </div>
-  )
-  });
+const desktopComponent = [];
+shoe.components.forEach((item , index)=>{
+  var show = false;
+ if(showItem === index){
+  show = true;
+ }
+   desktopComponent.push(<div key = {index}>
+    <div className = "component-name">
+      <div className='component-name-desktop'>{item.name} {" "}</div> 
+      <div className='desktop-downArrow-icon' onClick={()=>{              setFlag(false) ; setI(index); setJ(texture[index]); setBlink(true) ;if(showItem === index){
+        setShowItem(-1);
+      }else{ setShowItem(index) ;} }}><FontAwesomeIcon icon={faAngleDown} /></div> 
+      
+      </div>
+      <div>
+        <Selectordesktop 
+          ToggleshowSelectorDesktop={show}
+          colorButtons={colorButtons} 
+          textureButtons={textureButtons}
+        />
+      </div>
+   </div>)
+});
 
 
 
@@ -297,7 +301,7 @@ var divStyle = {
          <div className = "desktop-components" >
               <p>Select the shoe part to edit</p>  
               <div>
-                {desktopdetailButtons}
+                {desktopComponent}
               </div>
 {/* 
             <div className = "component-name">

@@ -105,6 +105,7 @@
     }
    
     .component-name:hover{
+        cursor: pointer;
         color:#BB9357; 
         background-color: #eee6da;
         border: 1px 0px 0px 0px solid #eee6da;
