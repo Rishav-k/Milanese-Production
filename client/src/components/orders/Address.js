@@ -165,7 +165,7 @@ const Address = () => {
         
       </div>
       {isLoading ? (
-        <div className="product-buy-now">
+        <div className="address-add-btn">
           <img
             className="loader-svg"
             src="https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Logo/Rolling-1.1s-50px+(1).svg"

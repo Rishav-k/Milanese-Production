@@ -34,9 +34,9 @@
         margin-right: 20px; 
     }
     
-    .address-add-btn {
+    .address-add-btn{
         position: absolute;
-        top: 106vh;
+        top: 106vh; 
         width: 40vw;
         height: 50px;
         background-color: #BB9357;
@@ -46,12 +46,32 @@
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
-        font-size: 20px;
+        font-size: 18px;
+        line-height: 24px;
+        color: #FFFFFF;
+        cursor: pointer;
+        /* margin-left: 2.3rem; */
+        border-radius: 5px;
+    }
+    .address-add-btn {
+        position: absolute;
+        top: 106vh; 
+        width: 40vw;
+        height: 50px;
+        background-color: #BB9357;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
         line-height: 24px;
         color: #FFFFFF;
         cursor: pointer;
         margin-left: 2.3rem;
         border-radius: 5px;
+         
     }
 
     .address-contact{

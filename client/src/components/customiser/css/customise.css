@@ -295,6 +295,7 @@
         justify-content: center;
         align-items: center;
         margin-right: 1rem;
+        font-size: 18px;
     }
     
     .right:hover{ 

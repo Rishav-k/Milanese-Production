@@ -141,7 +141,8 @@ cashfree.checkout(checkoutOptions).then(function(result){
               <div className ="billing-items"><span>Sub Total</span> <span style={{ color: "black" }}> Rs. {Number(product.price*quantity)}.00</span></div>
               </div>
            </div>
-           {isLoading?(<div className='product-buy-now'><img className='loader-svg' src="https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Logo/Rolling-1.1s-50px+(1).svg" alt="img"/></div>):( <div className = "checkout-proceed-to-pay" onClick={handleCashfree}>
+           {isLoading?(<div className='checkout-proceed-to-pay'>
+            <img className='loader-svg' src="https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Logo/Rolling-1.1s-50px+(1).svg" alt="img"/></div>):( <div className = "checkout-proceed-to-pay" onClick={handleCashfree}>
              Proceed To Pay
            </div>)}
           

@@ -32,7 +32,7 @@ import CustomContext from '../context/CustomContext.js';
 import SoleContext from '../context/SoleContext.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons' 
+import { faAngleDown,faAngleUp } from '@fortawesome/free-solid-svg-icons' 
 import Selectordesktop from './Selectordesktop.js';
 
 // var txt = textures.perforated;
@@ -192,12 +192,16 @@ shoe.components.forEach((item , index)=>{
   show = true;
  }
    desktopComponent.push(<div key = {index}>
-    <div className = "component-name">
+    <div className = "component-name"
+       style={(showItem===index)?{color:"#BB9357", 
+        backgroundColor: "#eee6da",
+        border: "1px 0px 0px 0px solid #eee6da",}:{ 
+        }}
+       >
       <div className='component-name-desktop'>{item.name} {" "}</div> 
       <div className='desktop-downArrow-icon' onClick={()=>{              setFlag(false) ; setI(index); setJ(texture[index]); setBlink(true) ;if(showItem === index){
         setShowItem(-1);
-      }else{ setShowItem(index) ;} }}><FontAwesomeIcon icon={faAngleDown} /></div> 
-      
+      }else{ setShowItem(index) ;} }}>{(showItem===index)?<FontAwesomeIcon icon={faAngleUp} />:<FontAwesomeIcon icon={faAngleDown} />} </div> 
       </div>
       <div>
         <Selectordesktop 
@@ -299,64 +303,18 @@ var divStyle = {
          </div>
 
          <div className = "desktop-components" >
-              <p>Select the shoe part to edit</p>  
-              <div>
-                {desktopComponent}
-              </div>
-{/* 
-            <div className = "component-name">
-                <div className='component-name-desktop'>{shoe.components[1].name} {" "}</div> 
-                <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowVampDesktop(!ToggleshowVampDesktop) ; setFlag(false) ; setI(1); setJ(texture[1]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
-                
-              </div>
-              <div>
-              <Selectordesktop 
-                  ToggleshowSelectorDesktop={ToggleshowVampDesktop}
-                   colorButtons={colorButtons} 
-                   textureButtons={textureButtons}
-                  />
-              </div>
-             
-              <div className = "component-name">
-                <div className='component-name-desktop'>{shoe.components[2].name} {" "}</div> 
-                <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowQuarterDesktop(!ToggleshowQuarterDesktop) ; setFlag(false) ; setI(2); setJ(texture[2]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
-                
-              </div>
-              <div>
-              <Selectordesktop 
-                  ToggleshowSelectorDesktop={ToggleshowQuarterDesktop}
-                   colorButtons={colorButtons} 
-                   textureButtons={textureButtons}
-                  />
-              </div>
-              <div className = "component-name">
-                <div className='component-name-desktop'>{shoe.components[3].name} {" "}</div> 
-                <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowBackstripDesktop(!ToggleshowBackstripDesktop) ; setFlag(false) ; setI(3); setJ(texture[3]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
-               
-              </div>
-              <div>
-              <Selectordesktop 
-                   ToggleshowSelectorDesktop={ToggleshowBackstripDesktop}
-                   colorButtons={colorButtons} 
-                   textureButtons={textureButtons}
-                  />
-              </div>
-              <div className = "component-name">
-                <div className='component-name-desktop'>{shoe.components[0].name} {" "}</div> 
-                <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowToeDesktop(!ToggleshowToeDesktop) ; setFlag(false) ; setI(0); setJ(texture[0]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
-                
-              </div> 
-              <div>
-              <Selectordesktop 
-                  ToggleshowSelectorDesktop={ToggleshowToeDesktop}
-                   colorButtons={colorButtons} 
-                   textureButtons={textureButtons}
-                  />
-              </div> */}
-
-            <div className= "component-name"> 
+            <p>Select the shoe part to edit</p>  
+            <div>
+              {desktopComponent}
+            </div>
+            <div className= "component-name"
+                style={(ToggleshowSoleDesktop===true)?{color:"#BB9357", 
+                backgroundColor: "#eee6da",
+                border: "1px 0px 0px 0px solid #eee6da",}:{ 
+            }}
+            > 
             <div className = 'component-name-desktop'>Sole</div>
-            <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowSoleDesktop(!ToggleshowSoleDesktop)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
+            <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowSoleDesktop(!ToggleshowSoleDesktop)}}>{(ToggleshowSoleDesktop===true)?<FontAwesomeIcon icon={faAngleUp} />:<FontAwesomeIcon icon={faAngleDown} />} </div> 
             </div>
 
             {ToggleshowSoleDesktop &&
