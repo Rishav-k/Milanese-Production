@@ -25,11 +25,12 @@ const Dashboard = () => {
       .then((product_details) => {
         console.log(product_details);
         updateProduct(product_details);
-        setFetchComplete(true); // Move the fetch completion flag here
+         // Move the fetch completion flag here
       })
       .catch((error) => {
         console.log(error);
       });
+      setFetchComplete(true);
   };
 
   const getShoesDetails = (id) => {

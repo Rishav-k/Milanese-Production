@@ -8,7 +8,7 @@ import * as THREE from 'three';
 import './css/customise.css';
 import { useNavigate } from 'react-router-dom';
 // import { useParams } from "react-router-dom";
-// import { Environment } from '@react-three/drei'
+import { Environment } from '@react-three/drei'
 
 import {HiOutlineDownload }from  "react-icons/hi";
 import {BsCurrencyRupee }from  "react-icons/bs";
@@ -68,10 +68,11 @@ function Customise({shoe}) {
     //  console.log(color);
     
      
-     const [ToggleshowToeDesktop , setToggleShowToeDesktop]=useState(false);
-     const [ToggleshowBackstripDesktop , setToggleShowBackstripDesktop]=useState(false);
-     const [ToggleshowVampDesktop , setToggleShowVampDesktop]=useState(false);
-     const [ToggleshowQuarterDesktop , setToggleShowQuarterDesktop]=useState(false);
+    //  const [ToggleshowToeDesktop , setToggleShowToeDesktop]=useState(false);
+    //  const [ToggleshowBackstripDesktop , setToggleShowBackstripDesktop]=useState(false);
+     const [showItem , setShowItem] = useState(-1);
+    //  const [ToggleshowDesktop , setToggleShowQuarterDesktop]=useState(false);
+    
     
      
      const [repeat , setRepeat] = useState(1);
@@ -193,6 +194,54 @@ shoe.sole.forEach((item , index)=>{
   soleButtons.push(<div key = {index}  className = "sole-name" onClick = {()=>{ setSoleId(item.id);updateSoleNo(index); setSoleLink(sole[item.id].link)}}> <div className = {soleId === item.id ? "sole-image-active" : "sole-image"} > <img src = {sole[item.id].icon} alt = "img" /> </div>   <div className='small-sole-name'> {sole[item.id].name} </div>  </div>)
 })
 
+const desktopComponent = [];
+
+
+shoe.components.forEach((item , index)=>{
+  var show = false;
+ if(showItem === index){
+  show = true;
+ }
+   desktopComponent.push(<div key = {index}>
+    <div className = "component-name">
+                <div className='component-name-desktop'>{item.name} {" "}</div> 
+                <div className='desktop-downArrow-icon' onClick={()=>{              setFlag(false) ; setI(index); setJ(texture[index]); setBlink(true) ;if(showItem === index){
+                  setShowItem(-1);
+                }else{ setShowItem(index) ;} }}><FontAwesomeIcon icon={faAngleDown} /></div> 
+                
+              </div>
+              <div>
+              
+              <Selectordesktop 
+                  ToggleshowSelectorDesktop={show}
+                   colorButtons={colorButtons}
+                   soleButtons={soleButtons}
+                   textureButtons={textureButtons}
+                  />
+              </div>
+   </div>)
+})
+// var dc = 0;
+//eslint-disable-next-line
+// for(var dc = 0 ; dc < shoe.components.length ; dc++){
+//   desktopComponent.push(<div key = {dc}>
+//     <div className = "component-name">
+//                 <div className='component-name-desktop'>{shoe.components[dc].name} {" "}</div> 
+//                 <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowQuarterDesktop(!ToggleshowQuarterDesktop) ; setFlag(false) ; setI(dc); setJ(texture[dc]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
+                
+//               </div>
+//               <div>
+//               <Selectordesktop 
+//                   ToggleshowSelectorDesktop={ToggleshowQuarterDesktop}
+//                    colorButtons={colorButtons}
+//                    soleButtons={soleButtons}
+//                    textureButtons={textureButtons}
+//                   />
+//               </div>
+//   </div>)
+// }
+
+
 // const viewerElement = [];
 // shoe.components.forEach((item , index)=>{
 // })
@@ -226,7 +275,8 @@ var divStyle = {
   return (<div className = "app">
     <div className = "customiser-view">
     
-    <div className = "brand-active"><center><img src = "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Logo/brand-logo.svg" alt = "Milanese"/></center>
+    <div className = "brand-active">
+    {/* <center><img src = "https://milaneseleather3d.s3.ap-south-1.amazonaws.com/Logo/brand-logo.svg" alt = "Milanese"/></center> */}
     <div className = "edit-function"> 
       <div className = "edit-function-name " onClick={()=>{
         setIsStartOver(!isStartOver);
@@ -251,7 +301,7 @@ var divStyle = {
 
         <Canvas shadows camera={{ position: [ 8 ,10 ,0], fov: 20 }} style={{ background: "#FFFFFF" }} gl={{ preserveDrawingBuffer: true }} scale = {[1,1,1]} >
        
-        {/* <Environment preset= "studio" background blur= {0.5} /> */}
+        {/* <Environment preset= "city" background blur= {0.5} /> */}
           {/* <axesHelper args={[5]} /> */}
           {/* <Environment files="./assets/env.exr" background blur={0.5} /> */}
           <directionalLight  intensity={0.4} position={[10, 10, 10]} castShadow shadow-mapSize-height={1024}
@@ -275,22 +325,22 @@ var divStyle = {
 
          <div className = "desktop-components" >
               <p>Select the shoe part to edit</p> 
-
-              <div className = "component-name">  
+                {desktopComponent}
+              {/* <div className = "component-name">  
                 <div className='component-name-desktop'>{shoe.components[1].name} {" "}</div> 
-                <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowVampDesktop(!ToggleshowVampDesktop) ; setFlag(false) ; setI(1); setJ(texture[1]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div>  
+                <div className='desktop-downArrow-icon' onClick={()=>{setShowItem(!showItem) ; setFlag(false) ;  setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div>  
               
               </div>
               <div>
               <Selectordesktop 
-                   ToggleshowSelectorDesktop={ToggleshowVampDesktop}
+                   ToggleshowSelectorDesktop={showItem}
                    colorButtons={colorButtons}
                    soleButtons={soleButtons}
                    textureButtons={textureButtons}
                   />
-              </div> 
+              </div>  */}
 
-              <div className = "component-name">
+              {/* <div className = "component-name">
                 <div className='component-name-desktop'>{shoe.components[2].name} {" "}</div> 
                 <div className='desktop-downArrow-icon' onClick={()=>{setToggleShowQuarterDesktop(!ToggleshowQuarterDesktop) ; setFlag(false) ; setI(2); setJ(texture[2]); setBlink(true)}}><FontAwesomeIcon icon={faAngleDown} /></div> 
                 
@@ -328,7 +378,7 @@ var divStyle = {
                    soleButtons={soleButtons}
                    textureButtons={textureButtons}
                   />
-              </div>
+              </div> */}
          </div>
 
          <div className="details">
